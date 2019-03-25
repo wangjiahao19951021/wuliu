@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>注册</title>
+
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/data-style.css" />
+		<link rel="stylesheet" type="text/css" href="lib/honeySwitch.css" />
+
+		<script src="lib/jquery-1.11.3/jquery.min.js" type="text/javascript"></script>
+		<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/honeySwitch.js" type="text/javascript"></script>
+
+		<style type="text/css">
+			@media (min-width: 768px) {
+
+				.wrap-datasheet {
+					width: 600px;
+					text-align: center;
+					margin: 20px auto;
+				}
+
+				.form-inline .form-group {
+					display: inline-block;
+					margin-bottom: 30px;
+					vertical-align: middle;
+				}
+			}
+		</style>
+
+	</head>
+	<body>
+		<!-- 注册 -->
+		<div class="wrap-login">
+			<div class="container">
+				<h1 class="title-h1">注册账号</h1>
+				<form>
+					<div class="form-group">
+						<label for="name">登录名/手机号</label>
+						<input type="" class="form-control" id="name" placeholder="请输入登录名/手机号">
+						<div class="alert alert-danger errinp hide" role="alert" id="errname">请输入用户名/手机号</div>
+						<div class="alert alert-danger errinp hide" role="alert" id="errphone">请输入正确的用户名/手机号</div>
+					</div>
+
+					<div class="form-group">
+						<label for="passwordone">密码</label>
+						<input type="password" class="form-control" id="passwordone" placeholder="请输入密码">
+						<div class="alert alert-danger errinp hide" role="alert" id="errpasswordone">请输入密码</div>
+					</div>
+
+					<div class="form-group">
+						<label for="passwordtow">重复密码</label>
+						<input type="password" class="form-control" id="passwordtow" placeholder="请再次输入密码">
+						<div class="alert alert-danger errinp hide" role="alert" id="errpasswordtow">请再次输入密码</div>
+						<div class="alert alert-danger errinp hide" role="alert" id="erryzpassword">输入的密码不一致</div>
+					</div>
+
+					<div class="form-group">
+						<label for="user">实名</label>
+						<input type="" class="form-control" id="user" placeholder="请输入真实姓名">
+						<div class="alert alert-danger errinp hide" role="alert" id="erruser">请输入真实姓名</div>
+					</div>
+
+					<div class="form-group">
+						<label for="invitation">注册邀请码</label>
+						<input type="" class="form-control" id="invitation" placeholder="请输入注册邀请码">
+						<div class="alert alert-danger errinp hide" role="alert" id="errinvitation">请输入注册邀请码</div>
+					</div>
+
+					<div class="btnbox-datasheet">
+						<button id="registered" type="button" class="btn btn-success btn-datasheet">注册</button>
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			// 手机号正则
+			// 			function yzphone(str) {
+			// 				var re = /^1\d{10}$/;
+			// 				if (!re.test(str)) {
+			// 					document.getElementById("errphone").classList.add("show");
+			// 					return false;
+			// 				} else {
+			// 					document.getElementById("errphone").classList.remove("show");
+			// 					return true;
+			// 				}
+			// 			}
+
+			function name1() {
+				var ele = document.getElementById("name").value;
+				if (ele == "") {
+					document.getElementById("errname").classList.add("show");
+					return false;
+
+				} else {
+					document.getElementById("errname").classList.remove("show");
+					var re = /^1\d{10}$/;
+					var yphone = document.getElementById("name").value;
+
+					if (!re.test(yphone)) {
+						document.getElementById("errphone").classList.add("show");
+
+					} else {
+						document.getElementById("errphone").classList.remove("show");
+
+					}
+				}
+
+			}
+
+			function passwordone() {
+				var ele = document.getElementById("passwordone").value;
+
+				if (ele == "") {
+					document.getElementById("errpasswordone").classList.add("show");
+
+					return false;
+				} else {
+					document.getElementById("errpasswordone").classList.remove("show");
+					return true;
+				}
+
+			}
+
+			function passwordtow() {
+				var password1 = document.getElementById("passwordone").value;
+				var password2 = document.getElementById("passwordtow").value;
+
+				if (password2 == "") {
+					document.getElementById("errpasswordtow").classList.add("show");
+				} else {
+					document.getElementById("errpasswordtow").classList.remove("show");
+
+					if (password1 != password2) {
+						document.getElementById("erryzpassword").classList.add("show");
+						return false;
+					} else {
+						document.getElementById("erryzpassword").classList.remove("show");
+						return true;
+					}
+				}
+
+			}
+
+// 			function yzpassword() {
+// 				var password1 = document.getElementById("passwordone").value;
+// 				var password2 = document.getElementById("passwordtow").value;
+// 
+// 				if (password1 != password2) {
+// 					document.getElementById("erryzpassword").classList.add("show");
+// 					return false;
+// 				} else {
+// 					document.getElementById("erryzpassword").classList.remove("show");
+// 					return false;
+// 				}
+// 
+// 			}
+
+			function user1() {
+				var ele = document.getElementById("user").value;
+				if (ele == "") {
+					document.getElementById("erruser").classList.add("show");
+
+					return false;
+				} else {
+					document.getElementById("erruser").classList.remove("show");
+					return true;
+				}
+
+			}
+
+			// 判断注册邀请码
+			function invitation2() {
+				var ele = document.getElementById("invitation").value;
+				
+				if (ele == "") {
+					document.getElementById("errinvitation").classList.add("show");
+					return false;
+				} else {
+					document.getElementById("errinvitation").classList.remove("show");
+					return true;
+				}
+
+			}
+
+			var Usubmit = document.getElementById('registered');
+
+			Usubmit.onclick = function() {
+				var v1 = name1();
+				var v2 = passwordone();
+				var v3 = passwordtow();
+				var v4 = user1();
+				var v5 = invitation2();
+
+				if (v1 && v2 && v3 && v4 && v5) {
+					location.href = "login.html";
+				} else {
+					return false;
+				}
+			}
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>注册</title>
+
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/data-style.css" />
+		<link rel="stylesheet" type="text/css" href="lib/honeySwitch.css" />
+
+		<script src="lib/jquery-1.11.3/jquery.min.js" type="text/javascript"></script>
+		<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/honeySwitch.js" type="text/javascript"></script>
+
+		<style type="text/css">
+			@media (min-width: 768px) {
+
+				.container-fluid {
+					width: 600px;
+					text-align: center;
+					margin: 20px auto;
+				}
+
+				.form-inline .form-group {
+					display: inline-block;
+					margin-bottom: 30px;
+					vertical-align: middle;
+				}
+			}
+		</style>
+
+	</head>
+	<body>
+		<!-- 注册 -->
+		<div class="wrap-login">
+			<div class="container-fluid">
+				<h1 class="title-h1">注册账号</h1>
+				<form>
+					<div class="form-group main-registered">
+						<input class="form-control" id="name" placeholder="请输入用户名/手机号">
+						<span class="errinp glyphicon glyphicon-remove hide" id="errphone"></span>
+						<span class="successinp glyphicon glyphicon-ok hide" id="sucphone"></span>
+					</div>
+
+					<div class="form-group main-registered">
+						<input type="password" class="form-control" id="passwordone" placeholder="请输入密码">
+						<span class="errinp glyphicon glyphicon-remove hide" id="errpassone"></span>
+						<span class="successinp glyphicon glyphicon-ok hide" id="sucpassone"></span>
+					</div>
+
+					<div class="form-group main-registered">
+						<input type="password" class="form-control" id="passwordtow" placeholder="请再次输入密码">
+						<span class="errinp glyphicon glyphicon-remove hide" id="errpasstow"></span>
+						<span class="successinp glyphicon glyphicon-ok hide" id="sucpasstow"></span>
+					</div>
+
+					<div class="form-group main-registered">
+						<input class="form-control" id="user" placeholder="请输入真实姓名">
+						<span class="errinp glyphicon glyphicon-remove hide" id="errname"></span>
+						<span class="successinp glyphicon glyphicon-ok hide" id="sucname"></span>
+					</div>
+
+					<div class="form-group main-registered">
+						<input class="form-control" id="invitation" placeholder="请输入注册邀请码">
+						<span class="errinp glyphicon glyphicon-remove hide" id="errinvitation"></span>
+						<span class="successinp glyphicon glyphicon-ok hide" id="sucinvitation"></span>
+					</div>
+
+					<div class="btnbox-datasheet">
+						<button id="registered" type="button" class="btn btn-success btn-datasheet">注册</button>
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+
+
+		<script type="text/javascript">
+
+			function name1() {
+				var ele = document.getElementById("name").value;
+
+				if (ele == "") {
+					document.getElementById("errphone").classList.add("show");
+					document.getElementById("sucphone").classList.remove("show");
+				} else {
+					document.getElementById("errphone").classList.remove("show");
+					document.getElementById("sucphone").classList.add("show");
+				}
+
+			}
+
+			function password1() {
+				var ele = document.getElementById("passwordone").value;
+
+				if (ele == "") {
+					document.getElementById("errpassone").classList.add("show");
+					document.getElementById("sucpassone").classList.remove("show");
+				} else {
+					document.getElementById("errpassone").classList.remove("show");
+					document.getElementById("sucpassone").classList.add("show");
+				}
+
+			}
+
+			function password2() {
+				var ele = document.getElementById("passwordtow").value;
+
+				if (ele == "") {
+					document.getElementById("errpasstow").classList.add("show");
+					document.getElementById("sucpasstow").classList.remove("show");
+				} else {
+					document.getElementById("errpasstow").classList.remove("show");
+					document.getElementById("sucpasstow").classList.add("show");
+				}
+
+			}
+
+			function user1() {
+				var ele = document.getElementById("user").value;
+
+				if (ele == "") {
+					document.getElementById("errname").classList.add("show");
+					document.getElementById("sucname").classList.remove("show");
+				} else {
+					document.getElementById("errname").classList.remove("show");
+					document.getElementById("sucname").classList.add("show");
+				}
+
+			}
+
+			function invitation1() {
+				var ele = document.getElementById("invitation").value;
+
+				if (ele == "") {
+					document.getElementById("errinvitation").classList.add("show");
+					document.getElementById("sucinvitation").classList.remove("show");
+				} else {
+					document.getElementById("errinvitation").classList.remove("show");
+					document.getElementById("sucinvitation").classList.add("show");
+				}
+
+			}
+
+
+			var Usubmit = document.getElementById('registered');
+
+			Usubmit.onclick = function() {
+				var v1 = name1();
+				var v2 = password1();
+				var v3 = password2();
+				var v4 = user1();
+				var v5 = invitation1();
+
+				if (v1 && v2 && v3 && v4 && v5) {
+					location.href = "login.html";
+				} else {
+					return false;
+				}
+			}
+
+		</script>
+
+	</body>
+</html>

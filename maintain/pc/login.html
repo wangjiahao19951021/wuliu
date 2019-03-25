@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>登陆</title>
+
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/data-style.css" />
+		<link rel="stylesheet" type="text/css" href="lib/honeySwitch.css" />
+
+		<script src="lib/jquery-1.11.3/jquery.min.js" type="text/javascript"></script>
+		<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/honeySwitch.js" type="text/javascript"></script>
+		
+		<style type="text/css">
+			@media (min-width: 768px) {
+				
+				.container-fluid{
+					width: 500px;
+					text-align: center;
+					margin: 50px auto;
+				}
+				
+				.form-inline .form-group {
+					display: inline-block;
+					margin-bottom: 30px;
+					vertical-align: middle;
+				}
+			}
+		</style>
+
+	</head>
+
+
+	<body>
+		<!-- 登陆模块 -->
+		<div class="wrap-login">
+			<div class="container-fluid">
+				<h1 class="title-h1">系统登陆</h1>
+
+				<form>
+					<div class="form-group main-registered">
+						<input class="form-control" id="name" placeholder="请输入登录名">
+						<span class="errinp glyphicon glyphicon-remove hide" id="errphone"></span>
+						<span class="successinp glyphicon glyphicon-ok hide" id="sucphone"></span>
+					</div>
+					<div class="form-group main-registered">
+						<input type="password" class="form-control" id="password" placeholder="请输入密码">
+						<span class="errinp glyphicon glyphicon-remove hide" id="errpass"></span>
+						<span class="successinp glyphicon glyphicon-ok hide" id="sucpass"></span>
+					</div>
+
+					<!-- 记住密码 -->
+					<div class="passwordbtn-login">
+						<span class="switch-off"></span>
+						<span>记住密码</span>
+					</div>
+
+					<div class="btnbox-datasheet">
+						<button id="login" type="button" class="btn btn-success btn-datasheet">登录</button>
+					</div>
+
+					<div class="zc-datasheep">
+						<p><a href="registered.html">还没有账号？注册一个</a></p>
+						<!-- <p><a href="internal-registered.html">内部员工注册？点击这里</a></p> -->
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+
+		<script type="text/javascript">
+
+			function name1() {
+				var ele = document.getElementById("name").value;
+
+				if (ele == "") {
+					document.getElementById("errphone").classList.add("show");
+					document.getElementById("sucphone").classList.remove("show");
+				} else {
+					document.getElementById("errphone").classList.remove("show");
+					document.getElementById("sucphone").classList.add("show");
+				}
+
+			}
+
+			function password1() {
+				var ele = document.getElementById("password").value;
+
+				if (ele == "") {
+					document.getElementById("errpass").classList.add("show");
+					document.getElementById("sucpass").classList.remove("show");
+				} else {
+					document.getElementById("errpass").classList.remove("show");
+					document.getElementById("sucpass").classList.add("show");
+				}
+
+			}
+
+			var Usubmit = document.getElementById('login');
+
+			Usubmit.onclick = function() {
+				var v1 = name1();
+				var v2 = password1();
+
+				if (v1 && v2) {
+					location.href = "index_view.html";
+				} else {
+					return false;
+				}
+			}
+
+		</script>
+
+	</body>
+</html>

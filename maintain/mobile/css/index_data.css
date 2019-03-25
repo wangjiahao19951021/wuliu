@@ -1,0 +1,23 @@
+.back{
+    font-size: 1.5em;
+    margin-left: 1em;
+}
+.content_menu{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}
+.title_left{
+    display: inline-block;
+    vertical-align: middle;
+}
+.title_content{
+    display: inline-block;
+    width: 30%;
+    vertical-align: middle;
+    background: #66ffff;
+    border-radius: 15px;
+    margin-left: 30%;
+    text-align: center;
+}

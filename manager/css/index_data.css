@@ -1,0 +1,30 @@
+.back{
+    font-size: 1.5em;
+    margin-left: 1em;
+    color: skyblue;
+}
+.content_menu{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}
+.title_left{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.title_right{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.title_content{
+    display: inline-block;
+    width: 40%;
+    vertical-align: middle;
+    /* background: #66ffff; */
+    border-radius: 15px;
+    margin: 0 85px;
+    text-align: center;
+}

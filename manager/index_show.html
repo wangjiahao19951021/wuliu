@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>员工展示页</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/index_content.css">
+		<link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+		<script src="lib/jquery-1.11.3/jquery.min.js"></script>
+		<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+		<!-- 分页插件 -->
+		<link rel="stylesheet" type="text/css" href="lib/pagination/common/reset.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="lib/pagination/common/highlight.min.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="lib/pagination/common/common.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="lib/pagination/pagination.css" media="screen">
+		<script src="lib/pagination/common/highlight.min.js"></script>
+		<script src="lib/pagination/jquery.pagination.js"></script>
+
+		<link rel="stylesheet" href="css/index_show.css">
+
+		<style type="text/css">
+			a {
+				color: #000000;
+				text-decoration: none;
+			}
+
+			@media (min-width: 768px) {
+
+				.container-fluid {
+					width: 600px;
+					margin: 30px auto;
+				}
+			}
+		</style>
+
+	</head>
+	<body>
+		<!-- 头部 -->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<p style="margin-top: 1em;" class="content_title"><span>你好</span><span>XXX</span><span class="content_drop">登出</span></p>
+
+				</div>
+			</div>
+		</nav>
+
+		<!-- mian  -->
+		<div class="wrap-indexshow">
+			<div class="container-fluid">
+				<main class="content_main">
+					<div class="content_menu">
+						<button type="button" class="btn btn-success">业务员</button>
+						<button type="button" class="btn btn-success" onclick=window.location.href='index_data.html'>查看全部</button>
+						<button type="button" class="btn btn-success" onclick=window.location.href='index_line.html'>线路</button>
+						<button type="button" class="btn btn-success">导出选中</button>
+					</div>
+				</main>
+
+				<div class="row">
+					<table class="table text-left">
+						<tbody>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td><span>全部选中</span></td>
+								<!-- <td></td>
+			                        <td></td> -->
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<!-- <td>2019-01-01</td>
+			                        <td>11:53:32</td>
+			                        <td>鲁CD1234</td> -->
+								<td>
+									<div onclick=window.location.href='employee-details.html'>
+										<p><span>张三</span></p>
+										<p><span>山东</span><span>-</span><span>内蒙</span><br /><span>山东</span><span>-</span><span>内蒙</span></p>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+										<p><span>张三</span></p>
+										<p><span>山东</span><span>-</span><span>内蒙</span><br /><span>山东</span><span>-</span><span>内蒙</span></p>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+										<p><span>张三</span></p>
+										<p><span>山东</span><span>-</span><span>内蒙</span><br /><span>山东</span><span>-</span><span>内蒙</span></p>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+										<p><span>张三</span></p>
+										<p><span>山东</span><span>-</span><span>内蒙</span></p>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+										<p><span>张三</span></p>
+										<p><span>山东</span><span>-</span><span>内蒙</span></p>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+										<p><span>张三</span></p>
+										<p><span>山东</span><span>-</span><span>内蒙</span></p>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+				<div class="content_footer">
+					<p>当前页面条目数:<span>6</span>条<a>更改</a></p>
+					<p>总共数据条目：<span>243</span>条</p>
+				</div>
+
+				<!-- 分页插件 -->
+				<nav aria-label="..." style="text-align: center">
+					<ul class="pagination">
+						<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+						<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+						<li class=""><a href="#">2 <span class="sr-only">(current)</span></a></li>
+						<li class=""><a href="#">3 <span class="sr-only">(current)</span></a></li>
+						<li>
+							<a href="#" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+
+
+	</body>
+</html>

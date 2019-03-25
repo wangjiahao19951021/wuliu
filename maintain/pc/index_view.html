@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>线路展示</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/index_content.css">
+
+		<script src="lib/jquery-1.11.3/jquery.min.js"></script>
+		<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+		<!-- 分页插件 -->
+		<link rel="stylesheet" type="text/css" href="lib/pagination/common/reset.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="lib/pagination/common/highlight.min.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="lib/pagination/common/common.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="lib/pagination/pagination.css" media="screen">
+		<script src="lib/pagination/common/highlight.min.js"></script>
+		<script src="lib/pagination/jquery.pagination.js"></script>
+		<link rel="stylesheet" href="css/index_line.css">
+		<!-- 日历插件 -->
+		<link type="text/css" rel="stylesheet" href="lib/jeDate/test/jeDate-test.css">
+		<link type="text/css" rel="stylesheet" href="lib/jeDate/skin/jedate.css">
+		<script type="text/javascript" src="lib/jeDate/src/jedate.js"></script>
+
+		<style>
+			.index_view_header{
+            display: flex;
+            margin-top: 30px;
+        }
+        .index_view_left{
+            width: 20%;   
+        }
+        .index_view_left img{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .distribution_ueser{
+
+        }
+        .index_view_left p{
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 5%;
+        }
+        .index_view_right{
+            width: 80%;
+            display: flex;
+            justify-content: flex-end;  
+            margin-top: 1%;        
+        }
+        .index_view_right input{
+            width: 20%;
+        }
+        .index_view_serch input{
+            width: 100px;
+            height: 20px;
+            float: left;
+        }
+        .index_view_serch p{
+            float: left;
+            width: 30px;
+            height: 20px;
+            border: 1px solid #ebebeb;
+            vertical-align: middle;
+            text-align: center;
+        }
+        /* 导航 */
+        .index_view_nav{
+            padding-top: 2em;
+        }
+        .index_view_nav div{
+            display: inline-block;
+            vertical-align: middle;
+            width: 15%;
+            height: 3em;
+            border-radius: 15px;
+            border: 1px solid #ebebeb;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+            text-align: center;
+            line-height: 3em;
+            font-size: 1em;
+            cursor: pointer;
+            background: #f5f5f5;            
+        }
+        .index_view_nav .index_view_navs{
+            background: white;
+        }
+        .index_lists{
+            max-height: 400px;
+            overflow: scroll;
+        }
+        .list-group-item{
+            display: flex;
+            justify-content: space-between
+        }
+        .list-group-item p{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .list-group-item p:last-of-type{
+            cursor: pointer;
+            margin-right: 30%;
+        }
+        .list-group-item input{
+            width: 15px; 
+            height: 15px; 
+            border-radius: 50%;
+        }
+        .iv_group{
+            display: flex;
+            margin: auto;
+            justify-content: center;
+        }
+        .iv_group span{
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 3em;
+            width: 50px;
+            text-align: center;
+        }
+        .iv_group div{
+            border-radius: 10px;            
+            border: 1px solid skyblue;
+        }
+        .iv_group div p:first-of-type{
+            border-right: 1px solid skyblue;
+        }
+        .iv_group div p{
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 3em;
+            width: 5em;
+            text-align: center;
+        }
+        .iv_group i{
+            color: skyblue;
+            font-size: 1em;
+        }
+        .panel_classification{
+            display: block;
+            position: relative;
+        }
+        .panel_mask{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            border: 1px solid #ddd;
+            z-index: 999;
+            background: white;
+            overflow: scroll;
+            display: none;
+        }
+        .panel_mask li{
+            padding: 1em 0;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+        .panel_mask li:first-child{
+            border-top: none;
+        }
+    </style>
+	</head>
+	<body>
+
+
+		<div class="container">
+			<div class="row index_view_header">
+				<div class="index_view_left">
+
+					<p class="distribution_ueser">
+						欢迎： <span>管理员</span>
+					</p>
+					<p>
+						登出
+					</p>
+				</div>
+				<div class="index_view_right">
+					<div class="index_view_serch">
+						<input type="text" disabled placeholder="times">
+						<p id="a"><i class="glyphicon glyphicon-calendar"></i></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row index_view_nav">
+				<div class="index_view_navl index_view_navs">分配路线</div>
+				<div class="index_view_navc">路线新增与删除</div>
+				<div class="index_view_navr">业务员新增与删除</div>
+			</div>
+			<div class="row">
+				<div class="panel_classification">
+					<div class="panel_mask">
+						<ul>
+							<li>当前负责人：<span>张三</span></li>
+							<li>当前负责人：<span>张三</span></li>
+							<li>当前负责人：<span>张三</span></li>
+							<li>当前负责人：<span>张三</span></li>
+							<li>当前负责人：<span>张三</span></li>
+							<li>当前负责人：<span>张三</span></li>
+							<li>当前负责人：<span>张三</span></li>
+							<li>当前负责人：<span>张三</span></li>
+							<li>当前负责人：<span>张三</span></li>
+							<li>当前负责人：<span>张三</span></li>
+							<li>当前负责人：<span>张三</span></li>
+							<li>当前负责人：<span>张三</span></li>
+							<li>当前负责人：<span>张三</span></li>
+							<li>当前负责人：<span>张三</span></li>
+						</ul>
+					</div>
+					<div class="panel panel-default">
+						<!-- List group -->
+						<ul class="list-group index_lists index_view_click">
+							<li class="list-group-item">
+								<p><span>山西</span>到<span>内蒙</span></p>
+								<p class="index_view_distribution">分配线路</p>
+							</li>
+							<li class="list-group-item">
+								<p><span>山西</span>到<span>内蒙</span></p>
+								<p class="index_view_distribution">分配线路</p>
+							</li>
+							<li class="list-group-item">Morbi leo risus</li>
+							<li class="list-group-item">Porta ac consectetur ac</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						</ul>
+					</div>
+				</div>
+
+
+
+
+
+
+			</div>
+		</div>
+
+
+		<script>
+			function time_view() {
+				// 比如需要这样的格式 yyyy-MM-dd hh:mm:ss
+				var date = new Date(Date.now());
+				Y = date.getFullYear() + '-';
+				M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+				D = date.getDate() + ' ';
+				h = date.getHours() + ':';
+				m = date.getMinutes() + ':';
+				s = date.getSeconds();
+				// console.log(Y+M+D); 
+				// 输出结果：2014-04-23 18:55:49
+				return Y + M + D
+			}
+			time_view()
+			let times = Y + M + D
+			// 替换时间
+			$(".index_view_serch input").attr("placeholder", times)
+
+
+			// 点击显示当前线路负责人
+			$(".index_view_click li").click(function() {
+				$(".panel_mask").toggle()
+			})
+
+			// 点击分配线路
+			$(".index_view_distribution").click(function(e) {
+				// 阻止冒泡
+				e.stopPropagation()
+				window.location.href = "./index_distribution.html"
+			})
+
+			// 点击tab键时跳转到对应页面
+			$(".index_view_nav div").click(function() {
+				$(this).addClass("index_view_navs").siblings().removeClass("index_view_navs");
+				let iv_idnex = $(this).index();
+				console.log(iv_idnex)
+				if (iv_idnex == 0) {
+					window.location.href = "./index_view.html"
+				} else if (iv_idnex == 1) {
+					window.location.href = "./index_route.html"
+				} else if (iv_idnex == 2) {
+					window.location.href = "./index_salesman.html"
+				}
+			})
+		</script>
+	</body>
+</html>

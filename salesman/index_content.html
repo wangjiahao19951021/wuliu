@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>数据展示页面</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/index_content.css">
+		<script src="lib/jquery-1.11.3/jquery.min.js"></script>
+		<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		
+		<style type="text/css">
+			a{
+				color: #000000;
+				text-decoration: none;
+			}
+			body{
+				padding: 0;
+			}
+			.index_data{
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				width: 95%;
+			}
+			.back{
+    font-size: 1.5em;
+    margin-left: 1em;
+    color: skyblue;
+}
+.content_menu{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}
+.title_left{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.title_right{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.title_content{
+    display: inline-block;
+    width: 40%;
+    vertical-align: middle;
+    /* background: #66ffff; */
+    border-radius: 15px;
+    margin: 0 85px;
+    text-align: center;
+}
+table span{
+	width: 30%;
+	display: inline-block;
+}
+.table tr td:first-child{
+	position: relative;
+}
+		</style>
+		
+	</head>
+	<body>
+		<!-- 头部 -->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed serchers" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					 aria-expanded="false" style="display: block;position: relative;
+            float: right;
+            padding: 9px 10px;
+            margin-top: 8px;
+            margin-right: 15px;
+            margin-bottom: 8px;">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<p style="margin-top: 1em;" class="content_title"><span>你好</span><span>XXX</span><span class="content_drop">登出</span><span>当前线路：</span><span>山东</span><span>-</span><span>浙江</span></p>
+
+				</div>
+			</div><!-- /.container-fluid -->
+		</nav>
+
+		<!-- mian  -->
+		<main class="content_main">
+			<div class="content_menu">
+				<button type="button" class="btn btn-success" onclick=window.location.href='date-sheet.html'>新增</button>
+				<button type="button" class="btn btn-success">更改</button>
+				<button type="button" class="btn btn-success">导入</button>
+				<button type="button" class="btn btn-success">导出</button>
+				<button type="button" class="btn btn-success btn_remove">删除</button>
+			</div>
+		</main>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="table-responsive">
+					<table class="table text-left">
+						<tbody>
+							<tr>
+								<td><input type="checkbox" class="all_checks"></td>
+								<td><span>全部选中</span></td>
+								<!-- <td></td>
+                            <td></td> -->
+							</tr>
+							<tr class="checkss">
+								<td><input type="checkbox"></td>
+								<!-- <td>2019-01-01</td>
+                            <td>11:53:32</td>
+                            <td>鲁CD1234</td> -->
+								<td>
+									<div>
+											<span>2019-01-02</span>
+											<span>11:53:32</span>
+											<span>鲁CD1234</span>
+									</div>
+								</td>
+							</tr>
+							<tr class="checkss">
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+											<span>2019-01-01</span>
+											<span>11:53:32</span>
+											<span>鲁CD1234</span>
+									</div>
+								</td>
+							</tr>
+							<tr class="checkss">
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+											<span>2019-01-01</span>
+											<span>11:53:32</span>
+											<span>鲁CD1234</span>
+									</div>
+								</td>
+							</tr>
+							<tr class="checkss">
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+											<span>2019-01-01</span>
+											<span>11:53:32</span>
+											<span>鲁CD1234</span>
+									</div>
+								</td>
+							</tr>
+							<tr class="checkss">
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+											<span>2019-01-01</span>
+											<span>11:53:32</span>
+											<span>鲁CD1234</span>
+									</div>
+								</td>
+							</tr>
+							<tr class="checkss">
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+											<span>2019-01-01</span>
+											<span>11:53:32</span>
+											<span>鲁CD1234</span>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="content_footer">
+			<p>当前页面条目数:<span>6</span>条<a>更改</a></p>
+			<p>总共数据条目：<span>243</span>条</p>
+		</div>
+
+		<!-- 分页插件 -->
+		<nav aria-label="..." style="text-align: center">
+			<ul class="pagination">
+				<li class="disabled">
+					<a href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+				<li class=""><a href="#">2 <span class="sr-only">(current)</span></a></li>
+				<li class=""><a href="#">3 <span class="sr-only">(current)</span></a></li>
+				<li>
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+
+		<script>
+			$(".serchers").click(function() {
+				window.location.href = "./index_insure.html"
+			})
+
+
+
+			$(".all_checks").click(function() {
+				if ($(this).is(":checked")) {
+					for (var i = 0; i < $(".checkss").length; i++) {
+						$(".checkss").eq(i).find("td:eq(0)").find("input").prop("checked", true)
+					}
+				} else {
+					for (var i = 0; i < $(".checkss").length; i++) {
+						$(".checkss").eq(i).find("td:eq(0)").find("input").prop("checked", false)
+					}
+				}
+			})
+
+			// 此处为判断全部选中逻辑
+			$("table").on("click", ".checkss input", function() {
+				var arr1 = [];
+				for (var i = 0; i < $(".checkss").length; i++) {
+					if ($(".checkss").eq(i).find("input").is(":checked")) {
+						arr1.push($(".checkss").eq(i).find("input").is(":checked"));
+					}
+				}
+				if (arr1.length == $(".checkss").length) {
+					$(".all_checks").prop("checked", true)
+				} else {
+					$(".all_checks").prop("checked", false)
+				}
+			})
+
+
+			// 删除操作
+			$(".btn_remove").on("click", function () {
+				var arr_removes = [];
+				for (var i = 0; i < $(".checkss").length; i++) {
+					if ($(".checkss").eq(i).find("input").is(":checked")) {
+						arr_removes.push(i)
+					}
+				}
+				for (var i = arr_removes.length; i > 0; i--) {
+					$(".checkss").eq(arr_removes[i - 1]).remove()
+				}
+			})
+
+		</script>
+	</body>
+</html>

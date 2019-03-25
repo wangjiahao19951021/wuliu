@@ -1,0 +1,11 @@
+table tr td:last-child div>p{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+.table tr td:last-child div{
+    text-align: left;
+}
+.table tr td:last-child div p{
+    margin: 0 1em;
+}
