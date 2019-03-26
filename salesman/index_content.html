@@ -105,7 +105,7 @@ table span{
 		<main class="content_main">
 			<div class="content_menu">
 				<button type="button" class="btn btn-success" onclick=window.location.href='date-sheet.html'>新增</button>
-				<button type="button" class="btn btn-success btn-change"  onclick=window.location.href='date-change.html'>更改</button>
+				<button type="button" class="btn btn-success btn-change" >更改</button>
 				<button type="button" class="btn btn-success">导入</button>
 				<button type="button" class="btn btn-success">导出</button>
 				<button type="button" class="btn btn-success btn_remove">删除</button>
@@ -281,6 +281,25 @@ table span{
 					}
 				}
 				
+			})
+
+
+			// 点击更改
+			$(".btn-change").click(function () {
+					var arr1 = [];
+					for (var i = 0; i < $(".checkss").length; i++) {
+						if ($(".checkss").eq(i).find("input").is(":checked")) {
+							arr1.push(i);
+						}
+					}
+					// 
+					if (arr1.length < 1) {
+						alert("请选择一个")
+					} else if (arr1.length >1) {
+						alert("请选择一个")
+					} else if (arr1.length == 1) {
+						window.location.href = "./date-change.html"
+					}
 			})
 
 		</script>
