@@ -76,7 +76,7 @@ table span{
 			.btn.active.focus {
 				outline: none;          
 			}
-			iframe{
+			.iframe_mask{
 				position: fixed;
 				width: 100%;
 				height: 100%;
@@ -231,12 +231,12 @@ table span{
 
 
 
-		<iframe src="./index_insure.html" frameborder="0"></iframe>
+		<iframe src="./index_insure.html" frameborder="0" class="iframe_mask"></iframe>
 		<script>
 
 			// 点击弹出搜索
 			$(".serchers").click(function() {
-				$("iframe").show()
+				$(".iframe_mask").show()
 			})
 		
 

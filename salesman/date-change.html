@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<title>修改数据</title>
+		<title>货品单详情数据</title>
 
 		<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/data-style.css" />
@@ -28,14 +28,11 @@
 		</style>
 	</head>
 	<body>
-		<!-- 修改数据 -->
-
-
-		
+		<!-- 货品单详情数据 -->
 		<div class="wrap-datasheet">
 			<div class="container-fluid">
 
-				<h1 class="title-h1">修改详情数据</h1>
+				<h1 class="title-h1">更改信息</h1>
 
 				<div class="row">
 					<div class="col-md-6 col-xs-6">
@@ -117,7 +114,30 @@
 					</div>
 				</div>
 
+				
+				<!-- 修改增加车牌 -->
 				<div class="row">
+					<div class="col-md-6 col-xs-6">
+						<form class="form-inline">
+							<div class="form-group">
+								<input  type="" class="form-control" placeholder="车型" id="car_model">
+								<div class="alert alert-danger errinp hide" role="alert" id="c_model" >请输入车型</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="col-md-6 col-xs-6">
+						<form class="form-inline">
+							<div class="form-group">
+								<input  type="" class="form-control" placeholder="电话" id="phone">
+								<div class="alert alert-danger errinp hide" role="alert" id="errcar">请输入电话</div>
+								<div class="alert alert-danger errinp hide" role="alert" id="errphone">电话号不正确</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<!-- <div class="row">
 					<div class="col-lg-12 col-md-12 col-xs-12">
 						<form class="form-inline">
 							<div class="form-group">
@@ -127,7 +147,7 @@
 							</div>
 						</form>
 					</div>
-				</div>
+				</div> -->
 
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-xs-12">
@@ -141,7 +161,7 @@
 				</div>
 				
 				<div class="btnbox-datasheet">
-					<button id="submit" type="button" class="btn btn-primary btn-datasheet" onclick=window.location.href='index_content.html'>提交修改</button>
+					<button id="submit" type="button" class="btn btn-primary btn-datasheet" onclick=window.location.href='index_content.html'>提交</button>
 				</div>
 			</div>
 
@@ -298,6 +318,22 @@
 			
 			}
 
+
+			// 车型
+			var car_model = function () {
+				var ele = document.getElementById("car_model").value;
+			
+				if (ele == "") {
+					document.getElementById("c_model").classList.add("show");
+			
+					return false;
+				} else {
+					document.getElementById("c_model").classList.remove("show");
+					return true;
+				}
+			
+			}
+
 			var Usubmit = document.getElementById('submit');
 
 			Usubmit.onclick = function() {
@@ -312,8 +348,9 @@
 				var v9 = phone1();
 				var v10 = note1();
 				
+				var v11  = car_model()
 
-				if (v1 && v2 && v3 && v4 && v5 && v6 && v7 && v8 && v9 && v10) {
+				if (v1 && v2 && v3 && v4 && v5 && v6 && v7 && v8 && v9 && v10 && v11) {
 					location.href = "index_content.html";
 				} else {
 					return false;
