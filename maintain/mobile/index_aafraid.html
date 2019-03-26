@@ -49,6 +49,25 @@
             float: left;
             width: 30%;
         }
+		
+		/* 小于768时 */
+		@media (max-width: 768px) {
+		    .container_pc{
+		        display: none;
+		    }
+		    .container_mv{
+		        display: block;
+		    }
+		}
+		@media (min-width: 768px) {
+		    .container_pc{
+		        display: block;
+		    }
+		    .container_mv{
+		        display: none;
+		    }
+		}
+		
     </style>
 </head>
 <body>
@@ -171,6 +190,16 @@
             } else {
                 $(".all_checks").prop("checked", false)
             }
+        })
+
+
+
+
+
+
+        // 点击取消操作
+        $(".afraid div:eq(1) .btn").click(function () {
+            window.history.go(-1)
         })
     </script>
 

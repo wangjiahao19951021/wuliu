@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>修改数据</title>
+
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/data-style.css" />
+
+		<script src="lib/jquery-1.11.3/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			@media (min-width: 768px) {
+
+				.wrap-datasheet {
+					width: 600px;
+					text-align: center;
+					margin: 20px auto;
+				}
+
+				.form-inline .form-group {
+					display: inline-block;
+					margin-bottom: 30px;
+					vertical-align: middle;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 修改数据 -->
+		<div class="wrap-datasheet">
+			<div class="container-fluid">
+
+				<h1 class="title-h1">修改详情数据</h1>
+
+				<div class="row">
+					<div class="col-md-6 col-xs-6">
+						<form class="form-inline">
+							<div class="form-group">
+								<input id="goods" type="" class="form-control" placeholder="货品">
+								<div class="alert alert-danger errinp hide" role="alert" id="errgoods">请输入货品</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="col-md-6 col-xs-6">
+						<form class="form-inline">
+							<div class="form-group">
+								<input id="category" type="" class="form-control" placeholder="品类">
+								<div class="alert alert-danger errinp hide" role="alert" id="errcategory">请输入品类</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 col-xs-6">
+						<form class="form-inline">
+							<div class="form-group">
+								<input id="unit" type="" class="form-control" placeholder="单位/吨">
+								<div class="alert alert-danger errinp hide" role="alert" id="errunit">请输入货品</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="col-md-6 col-xs-6">
+						<form class="form-inline">
+							<div class="form-group">
+								<input id="suttle-weight" type="" class="form-control" placeholder="净重">
+								<div class="alert alert-danger errinp hide" role="alert" id="errsuttle">请输入货品</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 col-xs-6">
+						<form class="form-inline">
+							<div class="form-group">
+								<input id="gross-weight" type="" class="form-control" placeholder="毛重">
+								<div class="alert alert-danger errinp hide" role="alert" id="errgross">请输入毛重</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="col-md-6 col-xs-6">
+						<form class="form-inline">
+							<div class="form-group">
+								<input id="tare-weight" type="" class="form-control" placeholder="皮重">
+								<div class="alert alert-danger errinp hide" role="alert" id="errtare">请输入皮重</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 col-xs-6">
+						<form class="form-inline">
+							<div class="form-group">
+								<input id="name" type="" class="form-control" placeholder="司机姓名">
+								<div class="alert alert-danger errinp hide" role="alert" id="errname">请输入司机姓名</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="col-md-6 col-xs-6">
+						<form class="form-inline">
+							<div class="form-group">
+								<input id="car" type="" class="form-control" placeholder="车牌号">
+								<div class="alert alert-danger errinp hide" role="alert" id="errcar">请输入车牌号</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-xs-12">
+						<form class="form-inline">
+							<div class="form-group">
+								<input id="phone" type="" class="form-control" placeholder="电话">
+								<div class="alert alert-danger errinp hide" role="alert" id="errphone">请输入电话</div>
+								<div class="alert alert-danger errinp hide" role="alert" id="errphone1">电话号不正确</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-xs-12">
+						<form class="form-inline">
+							<div class="form-group">
+								<input id="note" type="" class="form-control" placeholder="备注">
+								<div class="alert alert-danger errinp hide" role="alert" id="errnote">请输入备注</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				
+				<div class="btnbox-datasheet">
+					<button id="submit" type="button" class="btn btn-primary btn-datasheet" onclick=window.location.href='index_content.html'>提交修改</button>
+				</div>
+			</div>
+
+		</div>
+
+		<script type="text/javascript">
+			
+			function goods1() {
+				var ele = document.getElementById("goods").value;
+			
+				if (ele == "") {
+					document.getElementById("errgoods").classList.add("show");
+			
+					return false;
+				} else {
+					document.getElementById("errgoods").classList.remove("show");
+			
+					return true;
+				}
+			
+			}
+
+			function category1() {
+				var ele = document.getElementById("category").value;
+
+				if (ele == "") {
+					document.getElementById("errcategory").classList.add("show");
+
+					return false;
+				} else {
+					document.getElementById("errcategory").classList.remove("show");
+					return true;
+				}
+
+			}
+			
+			function unit1() {
+				var ele = document.getElementById("unit").value;
+			
+				if (ele == "") {
+					document.getElementById("errunit").classList.add("show");
+			
+					return false;
+				} else {
+					document.getElementById("errunit").classList.remove("show");
+					return true;
+				}
+			
+			}
+			
+			function suttleweight1() {
+				var ele = document.getElementById("suttle-weight").value;
+			
+				if (ele == "") {
+					document.getElementById("errsuttle").classList.add("show");
+			
+					return false;
+				} else {
+					document.getElementById("errsuttle").classList.remove("show");
+					return true;
+				}
+			
+			}
+			
+			function grossweight1() {
+				var ele = document.getElementById("gross-weight").value;
+			
+				if (ele == "") {
+					document.getElementById("errgross").classList.add("show");
+			
+					return false;
+				} else {
+					document.getElementById("errgross").classList.remove("show");
+					return true;
+				}
+			
+			}
+			
+			function tareweight1() {
+				var ele = document.getElementById("tare-weight").value;
+			
+				if (ele == "") {
+					document.getElementById("errtare").classList.add("show");
+			
+					return false;
+				} else {
+					document.getElementById("errtare").classList.remove("show");
+					return true;
+				}
+			
+			}
+			
+			function name1() {
+				var ele = document.getElementById("name").value;
+			
+				if (ele == "") {
+					document.getElementById("errname").classList.add("show");
+			
+					return false;
+				} else {
+					document.getElementById("errname").classList.remove("show");
+					return true;
+				}
+			
+			}
+			
+			function car1() {
+				var ele = document.getElementById("car").value;
+			
+				if (ele == "") {
+					document.getElementById("errcar").classList.add("show");
+			
+					return false;
+				} else {
+					document.getElementById("errcar").classList.remove("show");
+					return true;
+				}
+			
+			}
+			
+			function phone1() {
+				var ele = document.getElementById("phone").value;
+			
+				if (ele == "") {
+					document.getElementById("errphone").classList.add("show");
+				} else {
+					document.getElementById("errphone").classList.remove("show");
+					
+					var re = /^1\d{10}$/;
+					var yphone = document.getElementById("phone").value;
+					
+					if (!re.test(yphone)) {
+						document.getElementById("errphone1").classList.add("show");
+					
+					} else {
+						document.getElementById("errphone1").classList.remove("show");
+					
+					}
+				}
+			
+			}
+			
+			function note1() {
+				var ele = document.getElementById("note").value;
+			
+				if (ele == "") {
+					document.getElementById("errnote").classList.add("show");
+			
+					return false;
+				} else {
+					document.getElementById("errnote").classList.remove("show");
+					return true;
+				}
+			
+			}
+
+			var Usubmit = document.getElementById('submit');
+
+			Usubmit.onclick = function() {
+				var v1 = goods1();
+				var v2 = category1();
+				var v3 = unit1();
+				var v4 = suttleweight1();
+				var v5 = grossweight1();
+				var v6 = tareweight1();
+				var v7 = name1();
+				var v8 = car1();
+				var v9 = phone1();
+				var v10 = note1();
+				
+
+				if (v1 && v2 && v3 && v4 && v5 && v6 && v7 && v8 && v9 && v10) {
+					location.href = "index_content.html";
+				} else {
+					return false;
+				}
+			}
+		</script>
+
+	</body>
+</html>

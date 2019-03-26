@@ -49,6 +49,10 @@
 			table tbody tr:nth-child(even) {
 			    background: white;
 			}
+			table tr td:last-child div span{
+				width: 30%;
+				float: left;
+			}
 		</style>
 
 	</head>
@@ -64,7 +68,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button> -->
-				<a class="title_left" href="employee-details.html"><i class="glyphicon glyphicon-chevron-left back"></i></a>
+				<i class="glyphicon glyphicon-chevron-left back"></i>
 
 				<div class="title_content">
 					<p><span>业务员：</span><span>张三</span></p>
@@ -227,6 +231,13 @@
 				} else {
 					$(".all_checks").prop("checked", false)
 				}
+			})
+
+
+			// 返回按钮操作
+			$(".index_data").delegate("i", "click", function () {
+				// 后退操作
+				window.history.go(-1)
 			})
 		</script>
 	</body>

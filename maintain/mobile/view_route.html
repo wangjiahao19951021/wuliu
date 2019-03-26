@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>路线查看</title>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>路线查看</title>
 
-    <link rel="stylesheet" href="css/reset.css">    
-    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">  
-    <link rel="stylesheet" href="css/index_content.css">
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/index_content.css">
 
-    <script src="lib/jquery-1.11.3/jquery.min.js"></script>    
-    <script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		<script src="lib/jquery-1.11.3/jquery.min.js"></script>
+		<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
-    <!-- 分页插件 -->
-    <link rel="stylesheet" type="text/css" href="lib/pagination/common/reset.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="lib/pagination/common/highlight.min.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="lib/pagination/common/common.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="lib/pagination/pagination.css" media="screen">
-    <script src="lib/pagination/common/highlight.min.js"></script>
-    <script src="lib/pagination/jquery.pagination.js"></script>
-    
-    <link rel="stylesheet" href="css/index_line.css">
-    <style>
-        .content_main{
+		<!-- 分页插件 -->
+		<link rel="stylesheet" type="text/css" href="lib/pagination/common/reset.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="lib/pagination/common/highlight.min.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="lib/pagination/common/common.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="lib/pagination/pagination.css" media="screen">
+		<script src="lib/pagination/common/highlight.min.js"></script>
+		<script src="lib/pagination/jquery.pagination.js"></script>
+
+		<link rel="stylesheet" href="css/index_line.css">
+		<style>
+			.content_main{
             text-align: center;
         }
         .afraid{
@@ -51,104 +51,127 @@
             float: left;
             width: 30%;
         }
+		
+		p{
+			margin: 0;
+		}
+		
+		/* 小于768时 */
+		@media (max-width: 768px) {
+		    .container_pc{
+		        display: none;
+		    }
+		    .container_mv{
+		        display: block;
+		    }
+		}
+		@media (min-width: 768px) {
+		    .container_pc{
+		        display: block;
+		    }
+		    .container_mv{
+		        display: none;
+		    }
+		}
+		
     </style>
-</head>
-<body>
-      
-    <!-- mian  -->
-    <main class="content_main">
-        <div class="content_menu">
-            <button type="button" class="btn btn-success">配置线路</button>
-            <button type="button" class="btn btn-success">新增路线</button>
-            <button type="button" class="btn btn-success">删除选定</button>
-        </div>
-    </main>
+	</head>
+	<body>
 
-    <div class="container">
-        <div class="row">
-            <div class="table-responsive">
-                <table class="table text-left">
-                    <tbody>
-                        <tr>
-                            <td><input type="checkbox" class="all_checks"></td>   
-                            <td><span>全部选中</span></td>
-                        </tr>
-                        <tr class="checkss">
-                            <td><input type="checkbox"></td>
-                            <td>
-                                <div>
-                                    <span>山东</span><span>-</span><span>新疆</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="checkss">
-                            <td><input type="checkbox"></td>
-                            <td>
-                                <div>
-                                    <span>山东</span><span>-</span><span>新疆</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="checkss">
-                            <td><input type="checkbox"></td>
-                            <td>
-                                <div>
-                                    <span>山东</span><span>-</span><span>新疆</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="checkss">
-                            <td><input type="checkbox"></td>
-                            <td>
-                                <div>
-                                    <span>山东</span><span>-</span><span>新疆</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="checkss">
-                            <td><input type="checkbox"></td>
-                            <td>
-                                <div>
-                                    <span>山东</span><span>-</span><span>新疆</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="checkss">
-                            <td><input type="checkbox"></td>
-                            <td>
-                                <div>
-                                    <span>山东</span><span>-</span><span>新疆</span>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-        </div>
-        </div>
-    </div>
+		<!-- mian  -->
+		<main class="content_main container_mv">
+			<div class="content_menu">
+				<button type="button" class="btn btn-success">配置线路</button>
+				<button type="button" class="btn btn-success">新增路线</button>
+				<button type="button" class="btn btn-success btn_remove">删除选定</button>
+			</div>
+		</main>
 
-    <div class="afraid">
-        <div><button type="button" class="btn btn-success">返回</button></div>
-    </div>
+		<div class="container container_mv">
+			<div class="row">
+				<div class="table-responsive">
+					<table class="table text-left">
+						<tbody>
+							<tr>
+								<td><input type="checkbox" class="all_checks"></td>
+								<td><span>全部选中</span></td>
+							</tr>
+							<tr class="checkss">
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+										<span>山东</span><span>-</span><span>新疆</span>
+									</div>
+								</td>
+							</tr>
+							<tr class="checkss">
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+										<span>山东</span><span>-</span><span>新疆</span>
+									</div>
+								</td>
+							</tr>
+							<tr class="checkss">
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+										<span>山东</span><span>-</span><span>新疆</span>
+									</div>
+								</td>
+							</tr>
+							<tr class="checkss">
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+										<span>山东</span><span>-</span><span>新疆</span>
+									</div>
+								</td>
+							</tr>
+							<tr class="checkss">
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+										<span>山东</span><span>-</span><span>新疆</span>
+									</div>
+								</td>
+							</tr>
+							<tr class="checkss">
+								<td><input type="checkbox"></td>
+								<td>
+									<div>
+										<span>山东</span><span>-</span><span>新疆</span>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 
-    <div class="content_footer">
-        <p>当前页面条目数:<span>6</span>条<a>更改</a></p>
-        <p>总共数据条目：<span>243</span>条</p>
-    </div>
+		<div class="afraid container_mv">
+			<div><button type="button" class="btn btn-success">返回</button></div>
+		</div>
 
-    <!-- 分页插件 -->
-    <nav aria-label="..." style="text-align: center">
-        <ul class="pagination">
-          <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-          <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-          <li class=""><a href="#">2 <span class="sr-only">(current)</span></a></li>
-          <li class=""><a href="#">3 <span class="sr-only">(current)</span></a></li>
-        </ul>
-    </nav>
+		<div class="content_footer container_mv">
+			<p>当前页面条目数:<span>6</span>条<a>更改</a></p>
+			<p>总共数据条目：<span>243</span>条</p>
+		</div>
 
-    <script>
+		<!-- 分页插件 -->
+		<nav aria-label="..." style="text-align: center" class="container_mv">
+			<ul class="pagination">
+				<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+				<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+				<li class=""><a href="#">2 <span class="sr-only">(current)</span></a></li>
+				<li class=""><a href="#">3 <span class="sr-only">(current)</span></a></li>
+			</ul>
+		</nav>
 
-        $(".all_checks").click(function() {
+		<script>
+
+			$(".all_checks").click(function() {
             if ($(this).is(":checked")) {
                 for (var i = 0; i < $(".checkss").length; i++) {
                     $(".checkss").eq(i).find("td:eq(0)").find("input").prop("checked", true)
@@ -174,6 +197,338 @@
                 $(".all_checks").prop("checked", false)
             }
         })
+
+
+
+        // 删除
+        $(".btn_remove").on("click", function () {
+            var arr_removes = [];
+            for (var i = 0; i < $(".checkss").length; i++) {
+                if ($(".checkss").eq(i).find("input").is(":checked")) {
+                    arr_removes.push(i)
+                }
+            }
+            for (var i = arr_removes.length; i > 0; i--) {
+                $(".checkss").eq(arr_removes[i - 1]).remove()
+            }
+        })
+
+
+        // 点击返回
+        $(".afraid .btn").click(function () {
+            window.history.go(-1)
+        })
     </script>
-</body>
+
+
+
+		<style>
+			.index_view_header{
+            display: flex;
+            margin-top: 30px;
+        }
+        .index_view_left{
+            width: 20%;   
+        }
+        .index_view_left img{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .distribution_ueser{
+
+        }
+        .index_view_left p{
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 5%;
+        }
+        .index_view_right{
+            width: 80%;
+            display: flex;
+            justify-content: flex-end;  
+            margin-top: 1%;        
+        }
+        .index_view_right input{
+            width: 20%;
+        }
+        .index_view_serch input{
+            width: 100px;
+            height: 20px;
+            float: left;
+        }
+        .index_view_serch p{
+            float: left;
+            width: 30px;
+            height: 20px;
+            border: 1px solid #ebebeb;
+            vertical-align: middle;
+            text-align: center;
+        }
+        /* 导航 */
+        .index_view_nav{
+            padding-top: 2em;
+        }
+        .index_view_nav div{
+            display: inline-block;
+            vertical-align: middle;
+            width: 15%;
+            height: 3em;
+            border-radius: 15px;
+            border: 1px solid #ebebeb;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+            text-align: center;
+            line-height: 3em;
+            font-size: 1em;
+            cursor: pointer;
+            background: #f5f5f5;            
+        }
+        .index_view_nav .index_view_navs{
+            background: white;
+        }
+        .index_lists{
+            max-height: 400px;
+            overflow: scroll;
+        }
+        .list-group-item{
+            display: flex;
+            justify-content: space-between
+        }
+        .list-group-item p{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .list-group-item p:last-of-type{
+            cursor: pointer;
+            margin-right: 30%;
+        }
+        .list-group-item input{
+            width: 15px; 
+            height: 15px; 
+            border-radius: 50%;
+        }
+        .iv_group{
+            display: flex;
+            margin: auto;
+            justify-content: center;
+        }
+        .iv_group span{
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 3em;
+            width: 50px;
+            text-align: center;
+        }
+        .iv_group div{
+            border-radius: 10px;            
+            border: 1px solid skyblue;
+        }
+        .iv_group div p:first-of-type{
+            border-right: 1px solid skyblue;
+        }
+        .iv_group div p{
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 3em;
+            width: 5em;
+            text-align: center;
+        }
+        .iv_group i{
+            color: skyblue;
+            font-size: 1em;
+        }
+        .panel_classification{
+            display: block;
+            position: relative;
+        }
+        .panel_mask{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            border: 1px solid #ddd;
+            z-index: 999;
+            background: white;
+            overflow: scroll;
+            display: none;
+        }
+        .panel_mask li{
+            padding: 1em 0;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+        .panel_mask li:first-child{
+            border-top: none;
+        }
+    </style>
+
+
+		<!-- pc -->
+		<div class="container container_pc">
+			<div class="row index_view_header">
+				<div class="index_view_left">
+
+					<p class="distribution_ueser">
+						欢迎： <span>管理员</span>
+					</p>
+					<p>
+						登出
+					</p>
+				</div>
+				<div class="index_view_right">
+					<div class="index_view_serch">
+						<input type="text" disabled placeholder="times">
+						<p id="a"><i class="glyphicon glyphicon-calendar"></i></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container container_pc">
+			<div class="row index_view_nav">
+				<div class="index_view_navl">分配路线</div>
+				<div class="index_view_navc index_view_navs">路线新增与删除</div>
+				<div class="index_view_navr">业务员新增与删除</div>
+			</div>
+			<div class="row">
+
+				<div class="panel_classification">
+					<div class="panel panel-default">
+
+						<!-- List group -->
+						<ul class="list-group index_lists index_route">
+							<li class="list-group-item">
+								<p><span>山西</span>~<span>内蒙</span></p>
+								<p>
+									<span class="check">
+										<input type="checkbox" class="Checkbox" id="check1">
+									</span>
+								</p>
+							</li>
+							<li class="list-group-item">
+								<p><span>山西</span>~<span>内蒙1</span></p>
+								<p>
+									<span class="check">
+										<input type="checkbox" class="Checkbox" id="check1">
+									</span>
+								</p>
+							</li>
+							<li class="list-group-item">
+								<p><span>山西</span>~<span>内蒙2</span></p>
+								<p>
+									<span class="check">
+										<input type="checkbox" class="Checkbox" id="check1">
+									</span>
+								</p>
+							</li>
+							<li class="list-group-item">
+								<p><span>山西</span>~<span>内蒙3</span></p>
+								<p>
+									<span class="check">
+										<input type="checkbox" class="Checkbox" id="check1">
+									</span>
+								</p>
+							</li>
+							<li class="list-group-item">
+								<p><span>山西</span>~<span>内蒙4</span></p>
+								<p>
+									<span class="check">
+										<input type="checkbox" class="Checkbox" id="check1">
+									</span>
+								</p>
+							</li>
+						</ul>
+
+
+					</div>
+					<div class="iv_group">
+						<span>删除</span>
+						<div>
+							<p><i class="glyphicon glyphicon-minus"></i></p>
+							<p><i class="glyphicon glyphicon-plus"></i></p>
+						</div><span>添加</span>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+		<script>
+			function time_view() {
+				// 比如需要这样的格式 yyyy-MM-dd hh:mm:ss
+				var date = new Date(Date.now());
+				Y = date.getFullYear() + '-';
+				M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+				D = date.getDate() + ' ';
+				h = date.getHours() + ':';
+				m = date.getMinutes() + ':';
+				s = date.getSeconds();
+				// console.log(Y+M+D); 
+				// 输出结果：2014-04-23 18:55:49
+				return Y + M + D
+			}
+			time_view()
+			let times = Y + M + D
+			// 替换时间
+			$(".index_view_serch input").attr("placeholder", times)
+
+
+
+			window.onload = function() {
+				// 点击删除节点
+				$(".iv_group").delegate("p", "click", function() {
+					var i_index = $(this).index();
+					if (i_index == 0) {
+						// 删除
+						var remove_arr = [];
+						for (var i = 0; i < $(".index_route li").length; i++) {
+							if ($(".index_route li").eq(i).find("input").is(":checked")) {
+								remove_arr.push(i)
+							}
+						}
+						// 需要使用i--删除
+						for (var i = remove_arr.length; i > 0; i--) {
+							$(".index_route li").eq(remove_arr[i - 1]).remove()
+						}
+					} else {
+
+						// 添加
+						var str =
+							`<li class="list-group-item">
+                                    <p><span>山西</span>~<span>内蒙1</span></p>
+                                    <p>
+                                        <span class="check">
+                                                <input type="checkbox"class="Checkbox" id="check1">
+                                        </span>
+                                    </p>
+                                </li>`
+						$(".index_route").append(str);
+
+					}
+				})
+			}
+
+
+
+			// 点击tab键时跳转到对应页面
+			$(".index_view_nav div").click(function() {
+				$(this).addClass("index_view_navs").siblings().removeClass("index_view_navs");
+				let iv_idnex = $(this).index();
+				console.log(iv_idnex)
+				if (iv_idnex == 0) {
+					window.location.href = "./index_view.html"
+				} else if (iv_idnex == 1) {
+					window.location.href = "./index_route.html"
+				} else if (iv_idnex == 2) {
+					window.location.href = "./index_salesman.html"
+				}
+			})
+		</script>
+
+
+	</body>
 </html>

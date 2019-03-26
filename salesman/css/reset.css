@@ -55,3 +55,13 @@ table { border-collapse: collapse; border-spacing: 0; }
 .ks-clear, .clear {
   *zoom: 1;
 }
+
+
+.btn:focus,
+			.btn:active:focus,
+			.btn.active:focus,
+			.btn.focus,
+			.btn:active.focus,
+			.btn.active.focus {
+				outline: none;          
+			}
