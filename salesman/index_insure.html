@@ -84,6 +84,7 @@
 			top: 0;
 			z-index: 0999;
 			background: white;
+			/* display: none; */
 		}
 		
     </style>
@@ -95,9 +96,7 @@
 
 			<div class="container-fulid">
 
-				<a href="">
 					<i class="glyphicon glyphicon-remove-sign gbtu"></i>
-				</a>
 
 				<div class="main-insure">
 
@@ -300,7 +299,16 @@
 				}
 
 			})
+
+window.onload = function  () {
+	
+	$(".glyphicon-remove-sign").click(function () {
+		$(".mask").hide();
+	})
+}
 		</script>
+
+
 
 	</body>
 </html>

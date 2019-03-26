@@ -1,210 +1,48 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<title>添加人员</title>
 
-		<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/data-style.css" />
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>添加人员</title>
 
-		<script src="lib/jquery-1.11.3/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-		<style type="text/css">
-			
-			@media (min-width: 768px) {
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/data-style.css" />
 
-				.wrap-datasheet {
-					width: 600px;
-					text-align: center;
-					margin: 20px auto;
-				}
+	<script src="lib/jquery-1.11.3/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 
-				.form-inline .form-group {
-					display: inline-block;
-					margin-bottom: 30px;
-					vertical-align: middle;
-				}
+	<!-- 移动 -->
+	<style type="text/css">
+		@media (min-width: 768px) {
+
+			.wrap-datasheet {
+				width: 600px;
+				text-align: center;
+				margin: 20px auto;
 			}
-			
-			
-			
-		</style>
 
-<style>
-	.index_view_header{
-	display: flex;
-	margin-top: 30px;
-}
-.index_view_left{
-	width: 20%;   
-}
-.index_view_left img{
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-	display: inline-block;
-	vertical-align: middle;
-}
-.distribution_ueser{
-
-}
-.index_view_left p{
-	display: inline-block;
-	vertical-align: middle;
-	margin-left: 5%;
-}
-.index_view_right{
-	width: 80%;
-	display: flex;
-	justify-content: flex-end;  
-	margin-top: 1%;        
-}
-.index_view_right input{
-	width: 20%;
-}
-.index_view_serch input{
-	width: 100px;
-	height: 20px;
-	float: left;
-}
-.index_view_serch p{
-	float: left;
-	width: 30px;
-	height: 20px;
-	border: 1px solid #ebebeb;
-	vertical-align: middle;
-	text-align: center;
-}
-/* 导航 */
-.index_view_nav{
-	padding-top: 2em;
-}
-.index_view_nav div{
-	display: inline-block;
-	vertical-align: middle;
-	width: 18%;
-	height: 3em;
-	border-radius: 15px;
-	border: 1px solid #ebebeb;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
-	text-align: center;
-	line-height: 3em;
-	font-size: 1em;
-	cursor: pointer;
-	background: #f5f5f5;            
-}
-.index_view_nav .index_view_navs{
-	background: white;
-}
-.index_lists{
-	max-height: 400px;
-	overflow: scroll;
-}
-.list-group-item{
-	display: flex;
-	justify-content: space-between
-}
-.list-group-item p{
-	display: inline-block;
-	vertical-align: middle;
-}
-.list-group-item p:last-of-type{
-	cursor: pointer;
-	margin-right: 30%;
-}
-.list-group-item input{
-	width: 15px; 
-	height: 15px; 
-	border-radius: 50%;
-}
-.iv_group{
-	display: flex;
-	margin: auto;
-	justify-content: center;
-}
-.iv_group span{
-	display: inline-block;
-	vertical-align: middle;
-	line-height: 3em;
-	width: 50px;
-	text-align: center;
-}
-.iv_group div{
-	border-radius: 10px;            
-	border: 1px solid skyblue;
-}
-.iv_group div p:first-of-type{
-	border-right: 1px solid skyblue;
-}
-.iv_group div p{
-	display: inline-block;
-	vertical-align: middle;
-	line-height: 3em;
-	width: 5em;
-	text-align: center;
-}
-.iv_group i{
-	color: skyblue;
-	font-size: 1em;
-}
-.panel_classification{
-	display: block;
-	position: relative;
-}
-.panel_mask{
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 30%;
-	height: 100%;
-	border: 1px solid #ddd;
-	z-index: 999;
-	background: white;
-	overflow: scroll;
-	display: none;
-}
-.panel_mask li{
-	padding: 1em 0;
-	text-align: center;
-	border-top: 1px solid #ddd;
-}
-.panel_mask li:first-child{
-	border-top: none;
-}
-</style>
+			.form-inline .form-group {
+				display: inline-block;
+				margin-bottom: 30px;
+				vertical-align: middle;
+			}
+		}
+	</style>
 
 
-<style>
-/* 小于768时 */
-@media (max-width: 768px) {
-	.container_pc{
-		display: none;
-	}
-	.container_mv{
-		display: block;
-	}
-}
-@media (min-width: 768px) {
-	.container_pc{
-		display: block;
-	}
-	.container_mv{
-		display: none;
-	}
-}
+</head>
 
-</style>
-	</head>
-	<body>
-		<!-- 添加人员 -->
-		<div class="wrap-datasheet container_mv">
-			<div class="container-fluid">
+<body>
 
-				<h1 class="title-h1">添加人员</h1>
+	<!-- 移动 -->
+	<!-- 添加人员 -->
+	<div class="wrap-datasheet">
+		<div class="container-fluid">
 
-				<!-- <div class="row">
+			<h1 class="title-h1">添加人员</h1>
+
+			<!-- <div class="row">
 					<div class="col-md-6 col-xs-6">
 						<form class="form-inline">
 							<div class="form-group">
@@ -223,260 +61,98 @@
 						</form>
 					</div>
 				</div> -->
-				
-				<div class="row">
-					<div class="col-lg-12 col-md-12 col-xs-12">
-						<form class="form-inline">
-							<div class="form-group">
-								<input id="name" type="" class="form-control" placeholder="请输入人员名称">
-								<div class="alert alert-danger errinp hide" role="alert" id="errname">请输入人员名称</div>
-							</div>
-						</form>
-					</div>
-				</div>
 
-				<div class="row">
-					<div class="col-lg-12 col-md-12 col-xs-12">
-						<form class="form-inline">
-							<div class="form-group">
-								<input id="phone" type="" class="form-control" placeholder="请输入人员电话">
-								<div class="alert alert-danger errinp hide" role="alert" id="errphone">请输入电话</div>
-								<div class="alert alert-danger errinp hide" role="alert" id="errphone1">电话号码不正确</div>
-							</div>
-						</form>
-					</div>
-				</div>
-				
-				<div class="btnbox-datasheet">
-					<button id="submit" type="button" class="btn btn-primary btn-datasheet" onclick=window.location.href='index_content'>提交</button>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-xs-12">
+					<form class="form-inline">
+						<div class="form-group">
+							<input id="name" type="" class="form-control" placeholder="请输入人员名称">
+							<div class="alert alert-danger errinp hide" role="alert" id="errname">请输入人员名称</div>
+							<div class="alert alert-danger errinp hide" role="alert" id="errname1">请输入中文</div>
+						</div>
+					</form>
 				</div>
 			</div>
 
-		</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-xs-12">
+					<form class="form-inline">
+						<div class="form-group">
+							<input id="phone" type="" class="form-control" placeholder="请输入人员电话">
+							<div class="alert alert-danger errinp hide" role="alert" id="errphone">请输入电话</div>
+							<div class="alert alert-danger errinp hide" role="alert" id="errphone1">电话号码不正确</div>
+						</div>
+					</form>
+				</div>
+			</div>
 
-		<script type="text/javascript">
-			
-			function name1() {
-				var ele = document.getElementById("name").value;
-			
-				if (ele == "") {
-					document.getElementById("errname").classList.add("show");
-			
-					return false;
-				} else {
-					document.getElementById("errname").classList.remove("show");
-					return true;
-				}
-			
-			}
-			
-			function phone1() {
-				var ele = document.getElementById("phone").value;
-			
-				if (ele == "") {
-					document.getElementById("errphone").classList.add("show");
-				} else {
-					document.getElementById("errphone").classList.remove("show");
-					
-					var re = /^1\d{10}$/;
-					var yphone = document.getElementById("phone").value;
-					
-					if (!re.test(yphone)) {
-						document.getElementById("errphone1").classList.add("show");
-					
-					} else {
-						document.getElementById("errphone1").classList.remove("show");
-					
-					}
-				}
-			
-			}
-
-			var Usubmit = document.getElementById('submit');
-
-			Usubmit.onclick = function() {
-				var v1 = name1();
-				var v2 = phone1();
-				
-
-				if (v1 && v2) {
-					location.href = "index_content.html";
-				} else {
-					return false;
-				}
-			}
-		</script>
-
-
-
-
-<div class="container container_pc">
-	<div class="row index_view_header">
-		<div class="index_view_left">
-
-			<p class="distribution_ueser">
-				欢迎： <span>管理员</span>
-			</p>
-			<p>
-				登出
-			</p>
-		</div>
-		<div class="index_view_right">
-			<div class="index_view_serch">
-				<input type="text" disabled placeholder="times">
-				<p id="a"><i class="glyphicon glyphicon-calendar"></i></p>
+			<div class="btnbox-datasheet">
+				<button id="submit" type="button" class="btn btn-primary btn-datasheet" onclick=window.location.href='index_content'>提交</button>
 			</div>
 		</div>
+
 	</div>
-</div>
 
-<div class="container container_pc">
-	<div class="row index_view_nav">
-		<div class="index_view_navl">分配路线</div>
-		<div class="index_view_navc">路线新增与删除</div>
-		<div class="index_view_navr index_view_navs">业务员新增与删除</div>
-	</div>
-	<div class="row">
-		<div class="panel_classification">
-
-
-		</div>
-
-
-
-
-		<div class="panel_classification">
-			<div class="panel panel-default">
-				<!-- List group -->
-				<ul class="list-group index_lists index_route">
-					<li class="list-group-item">
-						<p>张333</p>
-						<p>
-							<span class="check">
-								<input type="checkbox" class="Checkbox" id="check1">
-							</span>
-						</p>
-					</li>
-					<li class="list-group-item">
-						<p>李四</p>
-						<p>
-							<span class="check">
-								<input type="checkbox" class="Checkbox" id="check1">
-							</span>
-						</p>
-					</li>
-					<li class="list-group-item">
-						<p>李四</p>
-						<p>
-							<span class="check">
-								<input type="checkbox" class="Checkbox" id="check1">
-							</span>
-						</p>
-					</li>
-					<li class="list-group-item">
-						<p>李四</p>
-						<p>
-							<span class="check">
-								<input type="checkbox" class="Checkbox" id="check1">
-							</span>
-						</p>
-					</li>
-					<li class="list-group-item">
-						<p>李四</p>
-						<p>
-							<span class="check">
-								<input type="checkbox" class="Checkbox" id="check1">
-							</span>
-						</p>
-					</li>
-				</ul>
-
-
-			</div>
-			<div class="iv_group">
-				<span>删除</span>
-				<div>
-					<p><i class="glyphicon glyphicon-minus"></i></p>
-					<p><i class="glyphicon glyphicon-plus"></i></p>
-				</div><span>添加</span>
-			</div>
-		</div>
-	</div>
-</div>
-
-<script>
-	function time_view() {
-		// 比如需要这样的格式 yyyy-MM-dd hh:mm:ss
-		var date = new Date(Date.now());
-		Y = date.getFullYear() + '-';
-		M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-		D = date.getDate() + ' ';
-		h = date.getHours() + ':';
-		m = date.getMinutes() + ':';
-		s = date.getSeconds();
-		// console.log(Y+M+D); 
-		// 输出结果：2014-04-23 18:55:49
-		return Y + M + D
-	}
-	time_view()
-	let times = Y + M + D
-	// 替换时间
-	$(".index_view_serch input").attr("placeholder", times)
-
-
-
-	// 点击tab键时跳转到对应页面
-	$(".index_view_nav div").click(function() {
-		$(this).addClass("index_view_navs").siblings().removeClass("index_view_navs");
-		let iv_idnex = $(this).index();
-		console.log(iv_idnex)
-		if (iv_idnex == 0) {
-			window.location.href = "./idnex_afshow.html"
-		} else if (iv_idnex == 1) {
-			window.location.href = "./view_route.html"
-		} else if (iv_idnex == 2) {
-			window.location.href = "./date-sheet.html"
-		}
-	})
-
-
-
-	// 点击新增删除业务员
-
-	window.onload = function() {
-		// 点击删除节点
-		$(".iv_group").delegate("p", "click", function() {
-			var i_index = $(this).index();
-			if (i_index == 0) {
-				// 删除
-				var remove_arr = [];
-				for (var i = 0; i < $(".index_route li").length; i++) {
-					if ($(".index_route li").eq(i).find("input").is(":checked")) {
-						remove_arr.push(i)
-					}
-				}
-				// 需要使用i--删除
-				for (var i = remove_arr.length; i > 0; i--) {
-					$(".index_route li").eq(remove_arr[i - 1]).remove()
-				}
+	<script type="text/javascript">
+		function name1() {
+			var ele = document.getElementById("name").value;
+			if (ele == "") {
+				document.getElementById("errname").classList.add("show");
 			} else {
+				document.getElementById("errname").classList.remove("show");
 
-				// 添加
-				var str =
-					`<li class="list-group-item">
-				<p>李四1</p>
-				<p>
-					<span class="check">
-							<input type="checkbox"class="Checkbox" id="check1">
-					</span>
-				</p>
-			</li>`
-				$(".index_route").append(str);
+				var re = /^[\u4e00-\u9fa5]+$/;
+				var yname = document.getElementById("name").value;
 
+				if (!re.test(yname)) {
+					document.getElementById("errname1").classList.add("show");
+
+				} else {
+					document.getElementById("errname1").classList.remove("show");
+
+				}
 			}
-		})
-	}
-</script>
 
-	</body>
+		}
+
+		function phone1() {
+			var ele = document.getElementById("phone").value;
+
+			if (ele == "") {
+				document.getElementById("errphone").classList.add("show");
+			} else {
+				document.getElementById("errphone").classList.remove("show");
+
+				var re = /^1\d{10}$/;
+				var yphone = document.getElementById("phone").value;
+
+				if (!re.test(yphone)) {
+					document.getElementById("errphone1").classList.add("show");
+
+				} else {
+					document.getElementById("errphone1").classList.remove("show");
+
+				}
+			}
+
+		}
+
+		var Usubmit = document.getElementById('submit');
+
+		Usubmit.onclick = function() {
+			var v1 = name1();
+			var v2 = phone1();
+
+
+			if (v1 && v2) {
+				location.href = "index_content.html";
+			} else {
+				return false;
+			}
+		}
+	</script>
+
+
+</body>
+
 </html>
