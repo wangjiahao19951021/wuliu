@@ -274,7 +274,7 @@
         .index_view_nav div{
             display: inline-block;
             vertical-align: middle;
-            width: 15%;
+            width: 18%;
             height: 3em;
             border-radius: 15px;
             border: 1px solid #ebebeb;
@@ -515,18 +515,20 @@
 
 
 			// 点击tab键时跳转到对应页面
+			// 点击tab键时跳转到对应页面
 			$(".index_view_nav div").click(function() {
 				$(this).addClass("index_view_navs").siblings().removeClass("index_view_navs");
 				let iv_idnex = $(this).index();
 				console.log(iv_idnex)
 				if (iv_idnex == 0) {
-					window.location.href = "./index_view.html"
+					window.location.href = "./idnex_afshow.html"
 				} else if (iv_idnex == 1) {
-					window.location.href = "./index_route.html"
+					window.location.href = "./view_route.html"
 				} else if (iv_idnex == 2) {
-					window.location.href = "./index_salesman.html"
+					window.location.href = "./date-sheet.html"
 				}
 			})
+
 		</script>
 
 
