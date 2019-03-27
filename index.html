@@ -17,7 +17,7 @@
             top: 0;
             left: 0;
             z-index: 999;
-            height: 100vh;
+            height: 100%;
             width: 100%;
             display: none;
         }
@@ -26,12 +26,16 @@
 <body>
     <div class="a"></div>
     <button>aaa</button>
-    <iframe src="./b.html" frameborder="0"></iframe>
+    <iframe src= "./b.html" frameborder="0" id="myIframe"></iframe>
     
     <script>
-        $("button").click(function () {
-            $("iframe").show()
+        window.onload = function () {
+            $("button").bind("click", function () {
+                var iframe = document.getElementById('myIframe') ;
+                iframe.style = "display:block";
         })
+        }
+
     </script>
 </body>
 </html>
