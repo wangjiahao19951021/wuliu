@@ -42,13 +42,13 @@
 				<form>
 					<div class="form-group">
 						<label for="name">登录名/手机号</label>
-						<input type="email" class="form-control index_login" id="name" placeholder="请输入登录名">
+						<input type="email" class="form-control index_login" id="name" placeholder="请输入登录名" name="tel">
 						<div class="alert alert-danger errinp hide" role="alert" id="errname">请输入登录名</div>
 						<div class="alert alert-danger errinp hide" role="alert" id="errphone">请输入正确的用户名/手机号</div>
 					</div>
 					<div class="form-group">
 						<label for="Password">密码</label>
-						<input type="password" class="form-control" id="password" placeholder="请输入密码">
+						<input type="password" class="form-control" id="password" placeholder="请输入密码" name="password">
 						<div class="alert alert-danger errinp hide" role="alert" id="errpassword">请输入密码</div>
 					</div>
 
@@ -115,17 +115,14 @@
 				var v1 = name1();
 				var v2 = password1();
 
-				// if (v1 && v2) {
-					if ($(".index_login").val() == 1) {
-						location.href = "./salesman/index_content.html";
-					} else if ( $(".index_login").val() == 2){
-						location.href = "./manager/index_show.html";
-					} else if ($(".index_login").val() == 3) {
-						location.href = "./maintain/mobile/idnex_afshow.html";
-					} 
-				// } else {
-				// 	return false;
-				// }
+				if (v1 && v2) {
+					
+					$("#name").attr("name")
+					$("#password").attr("name")
+					
+				} else {
+					return false;
+				}
 			}
 
 		</script>

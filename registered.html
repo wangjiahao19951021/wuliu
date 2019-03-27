@@ -39,27 +39,27 @@
 				<form>
 					<div class="form-group">
 						<label for="name">登录名/手机号</label>
-						<input type="" class="form-control" id="name" placeholder="请输入登录名/手机号">
+						<input type="" class="form-control" id="name" placeholder="请输入登录名/手机号" name="tel">
 						<div class="alert alert-danger errinp hide" role="alert" id="errname">请输入用户名/手机号</div>
 						<div class="alert alert-danger errinp hide" role="alert" id="errphone">请输入正确的用户名/手机号</div>
 					</div>
 
 					<div class="form-group">
 						<label for="passwordone">密码</label>
-						<input type="password" class="form-control" id="passwordone" placeholder="请输入密码">
+						<input type="password" class="form-control" id="passwordone" placeholder="请输入密码" name="password">
 						<div class="alert alert-danger errinp hide" role="alert" id="errpasswordone">请输入密码</div>
 					</div>
 
 					<div class="form-group">
 						<label for="passwordtow">重复密码</label>
-						<input type="password" class="form-control" id="passwordtow" placeholder="请再次输入密码">
+						<input type="password" class="form-control" id="passwordtow" placeholder="请再次输入密码" name="confirm_password">
 						<div class="alert alert-danger errinp hide" role="alert" id="errpasswordtow">请再次输入密码</div>
 						<div class="alert alert-danger errinp hide" role="alert" id="erryzpassword">输入的密码不一致</div>
 					</div>
 
 					<div class="form-group">
 						<label for="user">实名</label>
-						<input type="" class="form-control" id="user" placeholder="请输入真实姓名">
+						<input type="" class="form-control" id="user" placeholder="请输入真实姓名" name="name">
 						<div class="alert alert-danger errinp hide" role="alert" id="erruser">请输入真实姓名</div>
 					</div>
 
@@ -70,7 +70,7 @@
 
 					<div class="form-group" id="directorycont" style="display: none;">
 						<label for="invitation">注册邀请码</label>
-						<input type="" class="form-control" id="invitation" placeholder="请输入注册邀请码">
+						<input type="" class="form-control" id="invitation" placeholder="请输入注册邀请码" name="invitation_code">
 						<div class="alert alert-danger errinp hide" role="alert" id="errinvitation">请输入注册邀请码</div>
 					</div>
 
@@ -101,17 +101,6 @@
 
 		<script type="text/javascript">
 			// 手机号正则
-			// 			function yzphone(str) {
-			// 				var re = /^1\d{10}$/;
-			// 				if (!re.test(str)) {
-			// 					document.getElementById("errphone").classList.add("show");
-			// 					return false;
-			// 				} else {
-			// 					document.getElementById("errphone").classList.remove("show");
-			// 					return true;
-			// 				}
-			// 			}
-
 			function name1() {
 				var ele = document.getElementById("name").value;
 				if (ele == "") {
@@ -122,17 +111,40 @@
 					document.getElementById("errname").classList.remove("show");
 					var re = /^1\d{10}$/;
 					var yphone = document.getElementById("name").value;
-
+					
 					if (!re.test(yphone)) {
 						document.getElementById("errphone").classList.add("show");
-
+						
 					} else {
 						document.getElementById("errphone").classList.remove("show");
-
+						// alert(1)
 					}
 				}
 
 			}
+
+
+
+			$("#name").on("blur", function () {
+				var ele = document.getElementById("name").value;
+				if (ele == "") {
+					document.getElementById("errname").classList.add("show");
+					return false;
+
+				} else {
+					document.getElementById("errname").classList.remove("show");
+					var re = /^1\d{10}$/;
+					var yphone = document.getElementById("name").value;
+					
+					if (!re.test(yphone)) {
+						document.getElementById("errphone").classList.add("show");
+						
+					} else {
+						document.getElementById("errphone").classList.remove("show");
+						alert(1)
+					}
+				}
+			})
 
 			function passwordone() {
 				var ele = document.getElementById("passwordone").value;
@@ -168,20 +180,6 @@
 
 			}
 
-// 			function yzpassword() {
-// 				var password1 = document.getElementById("passwordone").value;
-// 				var password2 = document.getElementById("passwordtow").value;
-// 
-// 				if (password1 != password2) {
-// 					document.getElementById("erryzpassword").classList.add("show");
-// 					return false;
-// 				} else {
-// 					document.getElementById("erryzpassword").classList.remove("show");
-// 					return false;
-// 				}
-// 
-// 			}
-
 			function user1() {
 				var ele = document.getElementById("user").value;
 				if (ele == "") {
@@ -192,7 +190,6 @@
 					document.getElementById("erruser").classList.remove("show");
 					return true;
 				}
-
 			}
 
 			// 判断注册邀请码
@@ -202,16 +199,18 @@
 				if ($("#directorycont").css("display") === 'block') {
 					if (ele == "") {
 						document.getElementById("errinvitation").classList.add("show");
+						return false
 					} else {
 						document.getElementById("errinvitation").classList.remove("show");
+						return true
 					}
 				} else {
 					return true;
 				}
-
 			}
 
 			var Usubmit = document.getElementById('registered');
+
 
 			Usubmit.onclick = function() {
 				var v1 = name1();
@@ -219,9 +218,29 @@
 				var v3 = passwordtow();
 				var v4 = user1();
 				var v5 = invitation2();
-
+	
+				
+				// console.log(v1, v2, v3, )
 				if (v1 && v2 && v3 && v4 && v5) {
-					location.href = "date-show.html";
+					// console.log(11)
+					// $("#name").attr("name")
+					// $("#passwordone").attr("name")
+					// $("#passwordtow").attr("name")
+					// $("#user").attr("name")
+					// 注册邀请码
+					// $("#invitation").attr("name")
+					$.ajax({
+						url: "",
+						type: "get",
+						data: {
+							// 传递的参数
+						},
+						success: function (results) {
+							// 返回值
+							console.log(results.data)
+						}
+					})
+					
 				} else {
 					return false;
 				}
