@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <link rel="stylesheet" href="./pagination/pagination.css">
+    <script src="./pagination/common/jquery.min.js"></script>
+    <script src="./pagination/jquery.pagination.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+    <style>
+        .M-box11{
+            display: flex;
+            justify-content: center;
+        }
+        .m-style .active{
+            background: skyblue;
+            border: none;
+        }
+        .m-style a:hover{
+            background: skyblue;
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+        <!-- page盒子 -->
+        <div class="aa">
+            <div class="M-box11 m-style"></div>
+        </div>
+    
+
+    
+
+
+    
+    <script>
+        // 每页多少条数据
+        let pageSize = 6
+        // moren当前第几页
+        let pageNum = 1
+        // 总条数
+        let totalData = 12
+        init (pageNum, pageSize)
+        function init () {
+             
+            wayListData(pageNum, pageSize)
+            
+        }
+
+   
+
+    
+    
+
+    $('.M-box11').pagination({
+        mode: 'fixed',
+        // 一共多少条多少数据
+        totalData: totalData,
+        // 显示几条数据
+        showData: pageSize,
+        callback: function (api) {
+            $('.now').text(api.getCurrent());
+            console.log(api.getCurrent())
+            var c = api.getCurrent()
+
+            // 回调执行ajaxc
+
+
+        }
+    }, function (api) {
+        $('.now').text(api.getCurrent());
+    }); 
+
+    function wayListData(pageNum, pageSize) {
+        // $.ajax({
+        //     url:"http://test91.ykmimi.com/data/wayAll",
+        //     type:"post",
+        //     data: {
+        //         pageSize: pageSize,
+        //         pageNum: pageNum
+        //     },
+        //     success:function (data) {
+            
+        //     }
+        // })
+    
+
+        axios.get('http://localhost:3000/api/v1/getcommits', {
+            params: {
+                pageSize: pageSize,
+                pageNum: pageNum,
+                orderBy: "time",
+                classify: "all"
+            }
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+
+
+
+    </script>
+</body>
+</html>

@@ -32,14 +32,14 @@
 		<div class="wrap-datasheet">
 			<div class="container-fluid">
 
-				<h1 class="title-h1">货品单其他详情数据</h1>
+				<h1 class="title-h1">录入信息</h1>
 
 				<div class="row">
 					<div class="col-md-6 col-xs-6">
 						<form class="form-inline">
 							<div class="form-group">
-								<input id="goods" type="" class="form-control" placeholder="货品">
-								<div class="alert alert-danger errinp hide" role="alert" id="errgoods">请输入货品</div>
+								<input id="goods" type="" class="form-control" placeholder="出发省" name="start_pro">
+								<div class="alert alert-danger errinp hide" role="alert" id="errgoods">请输入出发省</div>
 							</div>
 						</form>
 					</div>
@@ -47,8 +47,8 @@
 					<div class="col-md-6 col-xs-6">
 						<form class="form-inline">
 							<div class="form-group">
-								<input id="category" type="" class="form-control" placeholder="品类">
-								<div class="alert alert-danger errinp hide" role="alert" id="errcategory">请输入品类</div>
+								<input id="category" type="" class="form-control" placeholder="到达省" name="arrive_pro">
+								<div class="alert alert-danger errinp hide" role="alert" id="errcategory">请输入到达省</div>
 							</div>
 						</form>
 					</div>
@@ -58,8 +58,8 @@
 					<div class="col-md-6 col-xs-6">
 						<form class="form-inline">
 							<div class="form-group">
-								<input id="unit" type="" class="form-control" placeholder="单位/吨">
-								<div class="alert alert-danger errinp hide" role="alert" id="errunit">请输入货品</div>
+								<input id="unit" type="" class="form-control" placeholder="出发市" name="start_down">
+								<div class="alert alert-danger errinp hide" role="alert" id="errunit">请输入出发市</div>
 							</div>
 						</form>
 					</div>
@@ -67,28 +67,8 @@
 					<div class="col-md-6 col-xs-6">
 						<form class="form-inline">
 							<div class="form-group">
-								<input id="suttle-weight" type="" class="form-control" placeholder="净重">
-								<div class="alert alert-danger errinp hide" role="alert" id="errsuttle">请输入货品</div>
-							</div>
-						</form>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6 col-xs-6">
-						<form class="form-inline">
-							<div class="form-group">
-								<input id="gross-weight" type="" class="form-control" placeholder="毛重">
-								<div class="alert alert-danger errinp hide" role="alert" id="errgross">请输入毛重</div>
-							</div>
-						</form>
-					</div>
-
-					<div class="col-md-6 col-xs-6">
-						<form class="form-inline">
-							<div class="form-group">
-								<input id="tare-weight" type="" class="form-control" placeholder="皮重">
-								<div class="alert alert-danger errinp hide" role="alert" id="errtare">请输入皮重</div>
+								<input id="suttle-weight" type="" class="form-control" placeholder="到达市" name="arrive_down">
+								<div class="alert alert-danger errinp hide" role="alert" id="errsuttle">请输入到达市</div>
 							</div>
 						</form>
 					</div>
@@ -98,8 +78,8 @@
 					<div class="col-md-6 col-xs-6">
 						<form class="form-inline">
 							<div class="form-group">
-								<input id="name" type="" class="form-control" placeholder="司机姓名">
-								<div class="alert alert-danger errinp hide" role="alert" id="errname">请输入司机姓名</div>
+								<input id="gross-weight" type="" class="form-control" placeholder="司机名" name="name">
+								<div class="alert alert-danger errinp hide" role="alert" id="errgross">请输入司机名</div>
 							</div>
 						</form>
 					</div>
@@ -107,8 +87,28 @@
 					<div class="col-md-6 col-xs-6">
 						<form class="form-inline">
 							<div class="form-group">
-								<input id="car" type="" class="form-control" placeholder="车牌号">
-								<div class="alert alert-danger errinp hide" role="alert" id="errcar">请输入车牌号</div>
+								<input id="tare-weight" type="" class="form-control" placeholder="电话" name="tel">
+								<div class="alert alert-danger errinp hide" role="alert" id="errtare">请输入电话</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 col-xs-6">
+						<form class="form-inline">
+							<div class="form-group">
+								<input id="name" type="" class="form-control" placeholder="车牌" name="platenum">
+								<div class="alert alert-danger errinp hide" role="alert" id="errname">请输入车牌</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="col-md-6 col-xs-6">
+						<form class="form-inline">
+							<div class="form-group">
+								<input id="car" type="" class="form-control" placeholder="车型" name="marque">
+								<div class="alert alert-danger errinp hide" role="alert" id="errcar">请输入车型</div>
 							</div>
 						</form>
 					</div>
@@ -117,49 +117,29 @@
 				
 				<!-- 修改增加车牌 -->
 				<div class="row">
-					<div class="col-md-6 col-xs-6">
-						<form class="form-inline">
-							<div class="form-group">
-								<input  type="" class="form-control" placeholder="车型" id="car_model">
-								<div class="alert alert-danger errinp hide" role="alert" id="c_model" >请输入车型</div>
-							</div>
-						</form>
-					</div>
-
-					<div class="col-md-6 col-xs-6">
-						<form class="form-inline">
-							<div class="form-group">
-								<input  type="" class="form-control" placeholder="电话" id="phone">
-								<div class="alert alert-danger errinp hide" role="alert" id="errcartel">请输入电话</div>
-								<div class="alert alert-danger errinp hide" role="alert" id="errphone1">电话号不正确</div>
-							</div>
-						</form>
-					</div>
-				</div>
-
-				<!-- <div class="row">
 					<div class="col-lg-12 col-md-12 col-xs-12">
 						<form class="form-inline">
 							<div class="form-group">
-								<input id="phone" type="" class="form-control" placeholder="电话">
-								<div class="alert alert-danger errinp hide" role="alert" id="errphone">请输入电话</div>
-								<div class="alert alert-danger errinp hide" role="alert" id="errphone1">电话号不正确</div>
+								<input  type="" class="form-control" placeholder="货品" id="car_model" name="cargo">
+								<div class="alert alert-danger errinp hide" role="alert" id="c_model" >请输入货品</div>
 							</div>
 						</form>
 					</div>
-				</div> -->
+
+					
+				</div>
 
 				<div class="row">
-					<div class="col-lg-12 col-md-12 col-xs-12">
-						<form class="form-inline">
-							<div class="form-group">
-								<input id="note" type="" class="form-control" placeholder="备注">
-								<div class="alert alert-danger errinp hide" role="alert" id="errnote">请输入备注</div>
-							</div>
-						</form>
-					</div>
-				</div>
-				
+						<div class="col-lg-12 col-md-12 col-xs-12">
+								<form class="form-inline">
+									<div class="form-group">
+										<input  type="" class="form-control" placeholder="备注" id="phone" name="common">
+										<div class="alert alert-danger errinp hide" role="alert" id="errphone">请输入备注</div>
+										<!-- <div class="alert alert-danger errinp hide" role="alert" id="errphone">电话号不正确</div> -->
+									</div>
+								</form>
+						</div>
+				</div>		
 				<div class="btnbox-datasheet">
 					<button id="submit" type="button" class="btn btn-primary btn-datasheet" onclick=window.location.href='index_content.html'>提交</button>
 				</div>
@@ -169,6 +149,7 @@
 
 		<script type="text/javascript">
 			
+			// 处发省
 			function goods1() {
 				var ele = document.getElementById("goods").value;
 			
@@ -184,6 +165,7 @@
 			
 			}
 
+			// 到达省
 			function category1() {
 				var ele = document.getElementById("category").value;
 
@@ -286,40 +268,37 @@
 				var ele = document.getElementById("phone").value;
 			
 				if (ele == "") {
-					document.getElementById("errcartel").classList.add("show");
-					return false
+					document.getElementById("errphone").classList.add("show");
 				} else {
-					document.getElementById("errcartel").classList.remove("show");
+					document.getElementById("errphone").classList.remove("show");
 					
-					var re = /^1\d{10}$/;
-					var yphone = document.getElementById("phone").value;
+					// var re = /^1\d{10}$/;
+					// var yphone = document.getElementById("phone").value;
 					
-					if (!re.test(yphone)) {
-						document.getElementById("errphone1").classList.add("show");
-						return false
+					// if (!re.test(yphone)) {
+					// 	document.getElementById("errphone1").classList.add("show");
 					
-					} else {
-						document.getElementById("errphone1").classList.remove("show");
-						return true
+					// } else {
+					// 	document.getElementById("errphone1").classList.remove("show");
 					
-					}
+					// }
 				}
 			
 			}
 			
-			function note1() {
-				var ele = document.getElementById("note").value;
+			// function note1() {
+			// 	var ele = document.getElementById("note").value;
 			
-				if (ele == "") {
-					document.getElementById("errnote").classList.add("show");
+			// 	if (ele == "") {
+			// 		document.getElementById("errnote").classList.add("show");
 			
-					return false;
-				} else {
-					document.getElementById("errnote").classList.remove("show");
-					return true;
-				}
+			// 		return false;
+			// 	} else {
+			// 		document.getElementById("errnote").classList.remove("show");
+			// 		return true;
+			// 	}
 			
-			}
+			// }
 
 
 			// 车型
@@ -349,14 +328,12 @@
 				var v7 = name1();
 				var v8 = car1();
 				var v9 = phone1();
-				var v10 = note1();
+				// var v10 = note1();
 				
 				var v11  = car_model()
 
-				console.log(v1 , v2 , v3 , v4 , v5 , v6 , v7 , v8 , v9 , v10 , v11);
-
-				if (v1 && v2 && v3 && v4 && v5 && v6 && v7 && v8 && v9 && v10 && v11) {
-					location.href = "index_content.html";
+				if (v1 && v2 && v3 && v4 && v5 && v6 && v7 && v8 && v9 && v11) {
+					// location.href = "index_content.html";
 				} else {
 					return false;
 				}

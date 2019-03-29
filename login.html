@@ -76,9 +76,11 @@
 
 			function name1() {
 				var ele = document.getElementById("name").value;
+				
 
 				if (ele == "") {
 					document.getElementById("errname").classList.add("show");
+					return false
 				} else {
 					document.getElementById("errname").classList.remove("show");
 					var re = /^1\d{10}$/;
@@ -86,9 +88,11 @@
 
 					if (!re.test(yphone)) {
 						document.getElementById("errphone").classList.add("show");
+						return false
 
 					} else {
 						document.getElementById("errphone").classList.remove("show");
+						return true
 
 					}
 				}
@@ -117,7 +121,7 @@
 
 				if (v1 && v2) {
 					
-					
+					console.log(11)
 					
 				} else {
 					return false;

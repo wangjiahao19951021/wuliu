@@ -12,6 +12,14 @@
 		<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 
+		<!-- axios -->
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+		<!-- 日期插件 -->
+		<link type="text/css" rel="stylesheet" href="lib/jeDate/test/jeDate-test.css">
+		<link type="text/css" rel="stylesheet" href="lib/jeDate/skin/jedate.css">
+		<script type="text/javascript" src="lib/jeDate/src/jedate.js"></script>
 		
 		<style type="text/css">
 			a{
@@ -76,18 +84,80 @@ table span{
 			.btn.active.focus {
 				outline: none;          
 			}
-			.iframe_mask{
-				position: fixed;
-				width: 100%;
-				height: 100%;
-				z-index: 999;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				display: none;
-			}
 		</style>
+
+
+
+
+<style>
+
+	input{
+	text-align: center;
+}
+
+
+.main-insure{
+	margin: 30px;
+}
+
+.row{
+	text-align: center;
+}
+.row_1 input{
+	margin: 1em 0;
+	padding: 1.5em 0;
+}
+.insure_serch{
+	margin: 2em 0;
+}
+.checkboxs{
+	text-align: left;
+}
+.footer_btn{
+	margin: 2em 0;
+}
+.insure_icon{
+	font-size: 3em;
+	margin-top: 1em;
+	color: skyblue;
+}
+.mask>i{
+	font-size: 2em;
+	/* position: fixed; */
+	top: 0;
+	left: 0;
+	color: skyblue;
+}
+
+@media (min-width: 768px) {
+	
+	.container-fulid{
+		width: 600px;
+		margin: 20px auto;
+	}
+}
+
+
+.gbtu{
+	color: #B92C28;
+	font-size: 30px;
+}
+
+.mask{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	overflow: scroll;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	background: white;
+	display: none;
+}
+
+</style>
 	</head>
 	<body>
 		<!-- 头部 -->
@@ -113,33 +183,201 @@ table span{
 			</div><!-- /.container-fluid -->
 		</nav>
 
+		<!-- 上传 -->
+		<style>
+			.fileinput-button{
+				position: relative;
+				border-radius: 15px;
+			}
+			.fileinput-button input{
+				position:absolute;
+				right: 0px;
+				top:0px;
+				opacity: 0;
+				-ms-filter: 'alpha(opacity=0)';
+				width: 100%;
+				height: 100%;
+			}
+
+
+			.file_mask{
+				position: fixed;
+				width: 90%;
+				height: 30%;
+				background: rgb(199, 22, 22);
+				border: 1px solid skyblue;
+				z-index: 999;
+				top: 30%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				border-radius: 10px;
+			}
+
+			
+		</style>
 		<!-- mian  -->
 		<main class="content_main">
 			<div class="content_menu">
 				<button type="button" class="btn btn-success" onclick=window.location.href='date-sheet.html'>新增</button>
 				<button type="button" class="btn btn-success btn-change" >更改</button>
-				<button type="button" class="btn btn-success">导入</button>
+				<!-- <button type="button" class="btn btn-success file_btn" data-target="#myModal" data-toggle="modal">导入</button> -->
+				<!-- <span class="btn btn-success fileinput-button" id="fileinput-button">
+					<span>导入</span>
+					<form id="fam" method="post" enctype="multipart/form-data" style="display: none">
+						<input type="file" id="uploadfile" >
+					</form>
+				</span>  -->
+				<!-- <form id="fam" method="post" enctype="multipart/form-data" style="display: none"></form> -->
+				<form id="fam" enctype='multipart/form-data' style="display:none;">
+					<div class="form-group">
+						<label for="upteainput">上传文件</label>
+						<input id="uploadfile" name="upfile" type="file" class="form-control-file">
+					</div>
+				</form>
+				<button id="fileinput-button" type="button" class="btn btn-success">导入</button>
+				<!-- <section class="file_mask">
+					<form id="fam" method="post" enctype="multipart/form-data">
+					<input type="file" id="uploadfile">
+					</form>
+					<button class="btn btn-">上传</button>
+				</section> -->
+				
 				<button type="button" class="btn btn-success">导出</button>
 				<button type="button" class="btn btn-success btn_remove">删除</button>
+
+				
 			</div>
 		</main>
+
+	  <!-- 上传弹窗 -->
+	  <!-- Modal -->
+	  <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			  <h4 class="modal-title" id="myModalLabel">导入文件</h4>
+			</div>
+
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  <button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		  </div>
+		</div>
+	  </div> -->
+		<script>
+
+			// $("#uploadfile").click(uploadonline)
+
+
+			$("#fileinput-button").click(function () {
+				$("#uploadfile").click()
+			})
+			$("#uploadfile").change(uploadonline)
+
+
+			// 上传
+			function uploadonline() {
+
+// var add = '/excel/importExcel';
+var uploadFile = $("#uploadfile")[0].files[0];
+console.log(uploadFile);
+var formData = new FormData();
+formData.append("uploadFile", uploadFile);
+console.log(formData);
+// if ("undefined" != typeof(uploadFile) && uploadFile != null && uploadFile != "") {
+$.ajax({
+	url: '/excel/importExcel?instance=' + "way",
+	type: 'POST',
+	data: formData,
+	async: false,
+	cache: false,
+	contentType: false, //不设置内容类型
+	processData: false, //不处理数据
+	success: function (data) {
+		// alert(data);
+		if (data > 0) {
+			console.log(1)
+			// $.messager.alert('操作结果', '导入数据成功');
+			// $("#booten").linkbutton('enable');
+			// $('#uploadonlineinfo').dialog('close');
+			// $('#dg').datagrid('reload');
+		} else {
+			console.log(2)
+			
+			// $.messager.alert('操作结果', '导入数据失败');
+			// $('#uploadonlineinfo').dialog('close');
+		}
+	}
+})
+}
+		</script>
+
+
+
+
+<script>
+
+			$("#uptea").click(function () {
+				$("#upteainput").click();
+			});
+
+			//下面是ajax上传文件的代码，此处就不做过多讲解。 
+			$("#upteainput").change(uploadonline);
+
+			// 上传
+			function uploadonline() {
+				// var add = '/excel/importExcel';
+				var uploadFile = $("#upteainput")[0].files[0];
+				console.log(uploadFile);
+				var formData = new FormData();
+				formData.append("uploadFile", uploadFile);
+				console.log(formData);
+				// if ("undefined" != typeof(uploadFile) && uploadFile != null && uploadFile != "") {
+				$.ajax({
+					url: '/excel/importExcel?instance=' + "way",
+					type: 'POST',
+					data: formData,
+					async: false,
+					cache: false,
+					contentType: false, //不设置内容类型
+					processData: false, //不处理数据
+					success: function (data) {
+						// alert(data);
+						if (data > 0) {
+							console.log(1)
+							// $.messager.alert('操作结果', '导入数据成功');
+							// $("#booten").linkbutton('enable');
+							// $('#uploadonlineinfo').dialog('close');
+							// $('#dg').datagrid('reload');
+						} else {
+							console.log(2)
+							
+							// $.messager.alert('操作结果', '导入数据失败');
+							// $('#uploadonlineinfo').dialog('close');
+						}
+					}
+				})
+			}
+
+</script>
 
 		<div class="container-fluid">
 			<div class="row">
 				<div class="table-responsive">
 					<table class="table text-left">
-						<tbody>
-							<tr>
+						<tbody class="aaaaa">
+							<tr class="aaa">
 								<td><input type="checkbox" class="all_checks"></td>
 								<td><span>全部选中</span></td>
-								<!-- <td></td>
-                            <td></td> -->
+								 <!-- <td></td>
+                            <td></td>  -->
 							</tr>
-							<tr class="checkss">
+							<!-- <tr class="checkss">
 								<td><input type="checkbox"></td>
-								<!-- <td>2019-01-01</td>
-                            <td>11:53:32</td>
-                            <td>鲁CD1234</td> -->
+
 								<td>
 									<div>
 											<span>2019-01-02</span>
@@ -147,8 +385,8 @@ table span{
 											<span>鲁CD1234</span>
 									</div>
 								</td>
-							</tr>
-							<tr class="checkss">
+							</tr> -->
+							<!-- <tr class="checkss">
 								<td><input type="checkbox"></td>
 								<td>
 									<div>
@@ -197,7 +435,7 @@ table span{
 											<span>鲁CD1234</span>
 									</div>
 								</td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 				</div>
@@ -231,12 +469,11 @@ table span{
 
 
 
-		<iframe src="./index_insure.html" frameborder="0" class="iframe_mask"></iframe>
 		<script>
 
 			// 点击弹出搜索
 			$(".serchers").click(function() {
-				$(".iframe_mask").show()
+				$(".mask").show()
 			})
 		
 
@@ -316,8 +553,422 @@ table span{
 						window.location.href = "./date-change.html"
 					}
 			})
-
-
 		</script>
+
+
+
+
+
+				
+
+<div class="mask">
+
+	<div class="container-fulid">
+
+			<i class="glyphicon glyphicon-remove-sign gbtu"></i>
+
+		<div class="main-insure">
+
+			<div class="row">
+				<div class="row_1 col-sm-4 col-xs-4">
+					<input type="text" class="form-control" placeholder="山东" aria-describedby="basic-addon1">
+					<input type="text" class="form-control" placeholder="出发市" aria-describedby="basic-addon1">
+				</div>
+				<div class="row_1 col-sm-4 col-xs-4">
+					<i class="glyphicon glyphicon-arrow-right insure_icon"></i>
+				</div>
+				<div class="row_1 col-sm-4 col-xs-4">
+					<input type="text" class="form-control" placeholder="新疆" aria-describedby="basic-addon1">
+					<input type="text" class="form-control" placeholder="到达市" aria-describedby="basic-addon1">
+				</div>
+			</div>
+			<div class="row">
+				<div class="row_1 col-sm-6 col-xs-6">
+					<input type="text" class="form-control" placeholder="司机名" aria-describedby="basic-addon1">
+					<input type="text" class="form-control" placeholder="电话" aria-describedby="basic-addon1">
+				</div>
+				<div class="row_1 col-sm-6 col-xs-6">
+					<input type="text" class="form-control" placeholder="车牌" aria-describedby="basic-addon1">
+					<input type="text" class="form-control" placeholder="车型" aria-describedby="basic-addon1">
+				</div>
+			</div>
+			<div class="row">
+				<div class="row_1 col-sm-6 col-xs-6">
+					<input type="text" class="form-control" placeholder="货品" aria-describedby="basic-addon1">
+					<input type="text" class="form-control" placeholder="创建时间（起）" aria-describedby="basic-addon1" id="a">
+				</div>
+				<div class="row_1 col-sm-6 col-xs-6">
+					<input type="text" class="form-control" placeholder="备注信息" aria-describedby="basic-addon1">
+					<input type="text" class="form-control" placeholder="创建时间（止）" aria-describedby="basic-addon1" id="b">
+				</div>
+			</div>
+			<div class="row insure_serch">
+				<button class="btn btn-success">查询数据</button>
+			</div>
+
+			<div class="row checkboxs">
+				<div class="col-sm-4 col-xs-4">
+					<form>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" name="name" checked> 司机名
+							</label>
+						</div>
+					</form>
+				</div>
+				<div class="col-sm-4 col-xs-4">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="tel" checked> 电话
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-4">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="cargo" checked> 货品
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-4">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="platenum"> 车牌号
+						</label>
+					</div>
+				</div>
+				<!-- <div class="col-sm-4 col-xs-4">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" nmae=""> 车型
+						</label>
+					</div>
+				</div> -->
+				<div class="col-sm-4 col-xs-4">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="common"> 备注信息
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-4">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="start_pro"> 出发省
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-4">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="arrive_pro"> 到达省
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-4">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="create_time"> 录入时间
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-4">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="start_down"> 出发市
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-4">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="arrive_down"> 到达市
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-4">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="update_time"> 更改时间
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- 确认展示数据条目 -->
+			<div class="row">
+				<button class="btn btn-success footer_btn">确认展示数据条目</button>
+			</div>
+
+		</div>
+
+
+
+
+	</div>
+</div>
+
+
+<script>
+	var enLang = {
+		name: "en",
+		month: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+		weeks: ["SUN", "MON", "TUR", "WED", "THU", "FRI", "SAT"],
+		times: ["Hour", "Minute", "Second"],
+		timetxt: ["Time", "Start Time", "End Time"],
+		backtxt: "Back",
+		clear: "Clear",
+		today: "Now",
+		yes: "Confirm",
+		close: "Close"
+	}
+	jeDate("#a", {
+		// language:enLang,
+		format: "YYYY-MM-DD hh:mm:ss"
+	});
+	jeDate("#b", {
+		// language:enLang,
+		format: "YYYY-MM-DD hh:mm:ss"
+
+	});
+
+	// 点击返回
+	$(".mask>i").click(function() {
+		window.location.href = "./index_content.html"
+	})
+
+	// 设置最多选择3个条件
+	function insure(response) {
+		
+	}
+
+	// 此处为点击确认展示数据条目数
+	
+	// $(".footer_btn").click(function () {
+	// 	alert(1)
+	// })
+
+
+	// 点击input时判断最多选择3个
+	$("input").click(function() {
+		var arr2 = [];
+		for (var i = 0; i < $(".checkboxs .col-sm-4").length; i++) {
+			if ($(".checkboxs .col-sm-4").eq(i).find("input").is(":checked")) {
+				arr2.push(i);
+				if (arr2.length > 3) {
+					alert("最多选择3个");
+					return false
+				}
+			}
+		}
+
+	})
+
+	$(".glyphicon-remove-sign").click(function () {
+		$(".mask").hide();
+	})
+
+
+	var data = [{
+		"w_id": 1,
+		"platenum": "242423",
+		"tel": "11111111111",
+		"name": null,
+		"start_pro": "da",
+		"start_down": null,
+		"arrive_pro": "ada",
+		"arrive_down": null,
+		"marque": "ada",
+		"cargo": "ada",
+		"create_time": "2019-03-23T10:54:10.000+0000",
+		"update_time": "2019-03-27T15:05:34.000+0000",
+		"common": "ada"
+	}, {
+		"w_id": 2,
+		"platenum": "4225252",
+		"tel": "11111111111",
+		"name": null,
+		"start_pro": "dad",
+		"start_down": null,
+		"arrive_pro": "adda",
+		"arrive_down": null,
+		"marque": "dad",
+		"cargo": "ada",
+		"create_time": "2019-03-23T11:22:04.000+0000",
+		"update_time": "2019-03-27T15:27:36.000+0000",
+		"common": "adada"
+	}, {
+		"w_id": 2,
+		"platenum": "4225252",
+		"tel": "11111111111",
+		"name": null,
+		"start_pro": "dad",
+		"start_down": null,
+		"arrive_pro": "adda",
+		"arrive_down": null,
+		"marque": "dad",
+		"cargo": "ada",
+		"create_time": "2019-03-23T11:22:04.000+0000",
+		"update_time": "2019-03-27T15:27:36.000+0000",
+		"common": "adada"
+	}, {
+		"w_id": 2,
+		"platenum": "4225252",
+		"tel": "11111111111",
+		"name": null,
+		"start_pro": "dad",
+		"start_down": null,
+		"arrive_pro": "adda",
+		"arrive_down": null,
+		"marque": "dad",
+		"cargo": "ada",
+		"create_time": "2019-03-23T11:22:04.000+0000",
+		"update_time": "2019-03-27T15:27:36.000+0000",
+		"common": "adada"
+	}, {
+		"w_id": 2,
+		"platenum": "4225252",
+		"tel": "11111111111",
+		"name": null,
+		"start_pro": "dad",
+		"start_down": null,
+		"arrive_pro": "adda",
+		"arrive_down": null,
+		"marque": "dad",
+		"cargo": "ada",
+		"create_time": "2019-03-23T11:22:04.000+0000",
+		"update_time": "2019-03-27T15:27:36.000+0000",
+		"common": "adada"
+	}, {
+		"w_id": 2,
+		"platenum": "4225252",
+		"tel": "11111111111",
+		"name": null,
+		"start_pro": "dad",
+		"start_down": null,
+		"arrive_pro": "adda",
+		"arrive_down": null,
+		"marque": "dad",
+		"cargo": "ada",
+		"create_time": "2019-03-23T11:22:04.000+0000",
+		"update_time": "2019-03-27T15:27:36.000+0000",
+		"common": "adada"
+	}]
+
+	var arr3 = [];
+		for (var i = 0; i < $(".checkboxs .col-sm-4").length; i++) {
+			if ($(".checkboxs .col-sm-4").eq(i).find("input").is(":checked")) {
+				arr3.push($(".checkboxs .col-sm-4").eq(i).find("input").attr("name"));
+			}
+		}
+		console.log(arr3)
+
+// 	// http://test91.ykmimi.com/way/getWayList 
+// 	axios.get('http://test91.ykmimi.com/way/getWayList')
+//   .then(function (response) {
+
+	  
+    // console.log(response.data);
+	// let data = response.data
+	console.log(data)
+	$(".footer_btn").click(function () {
+		var arr1 = [];
+		for (var i = 0; i < $(".checkboxs .col-sm-4").length; i++) {
+			if ($(".checkboxs .col-sm-4").eq(i).find("input").is(":checked")) {
+				arr1.push(i);
+			}
+		}
+		console.log(arr1)
+		if (arr1.length > 3) {
+			alert("最多选择3个");
+		}
+
+		$(".checkss").remove()
+		
+
+		// var str = `<tr class="checkss">
+		// 						<td><input type="checkbox"></td>
+		// 						<td>
+		// 							<div>
+		// 									<span>2019-01-01</span>
+		// 									<span>11:53:32</span>
+		// 									<span>鲁CD1234</span>
+		// 							</div>
+		// 						</td>
+		// 					</tr>`
+		var arr2 = []
+		for (var i = 0; i < arr1.length; i++) {
+			// console.log($(".checkboxs .col-sm-4").eq(arr1[i]).find("input").attr("name"))
+			arr2.push($(".checkboxs .col-sm-4").eq(arr1[i]).find("input").attr("name"))
+		}
+		var cc;
+		var strs = ''
+		var stess = ""
+		// console.log(data)
+
+		$(".aaaaa .checkss").remove()
+		for (a in data) {
+			// strs += '<tr class="checkss">' +
+			// '<td><input type="checkbox"></td>' +
+			// '<td class="ba">' +
+			// '<div class="cc" data-id="' + data[a].w_id + '">'+
+				
+			// '</div>'+
+			// '</td>'+
+			// '</tr>'
+			// console.log(data[a])
+			console.log(1)
+			var st = $("<tr class='checkss'><tr>").appendTo($(".aaaaa"))
+			var st1 = $('<td><input type="checkbox"></td>').appendTo(st)
+			var st2 = $('<td class="ba"></td>').appendTo(st)
+			var st3 = $("<div class='cc' data-id=" + data[a].w_id + ">").appendTo(st2)
+
+			// strs = `
+			// <tr class="checkss">
+			// 					<td><input type="checkbox"></td>
+			// 					<td class="ba">
+			// 						<div class="cc" data-id="${data[a].w_id}">
+									
+			// 						</div>
+			// 					</td>
+			// 				</tr>`
+			
+			for (b of arr2) {
+				// console.log(data[a][b]);
+				//   stess =  `<span>${data[a][b]}</span>`
+
+				// $(".cc").append(stess)
+				$("<span>"+data[a][b]+"</span>").appendTo(st3)
+			}
+		
+			
+		}
+		
+		$(".mask").hide()
+	})
+
+
+
+
+	$("table").delegate(".cc","click",function () {
+		var iid = $(this).attr("data-id")
+		for (var o in data){
+			console.log(data[o].w_id)
+			if (data[o].w_id == iid) {
+				console.log(data[o])
+				// 显示详细信息
+				
+			}
+		}
+	})
+//   })
+//   .catch(function (error) {
+//     // console.log(error);
+//   });
+
+
+  
+
+</script>
 	</body>
 </html>
